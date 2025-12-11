@@ -17,7 +17,7 @@ The purpose of this project is to provide "Hello World" examples in various Pyth
 
 ## Why
 
-Learning and comparing different Python web frameworks can be challenging. This project provides a standardized "Hello World" implementation across 48+ different frameworks, making it easy to:
+Learning and comparing different Python web frameworks can be challenging. This project provides a standardized "Hello World" implementation across 50+ different frameworks, making it easy to:
 
 - Compare syntax and structure across frameworks
 - Get started quickly with any framework
@@ -28,30 +28,37 @@ Learning and comparing different Python web frameworks can be challenging. This 
 
 ### CGI
 
-- [Common Gateway Interface - Wikipedia](https://en.wikipedia.org/wiki/Common_Gateway_Interface)
-- [cgi — Common Gateway Interface support — Python 3.10.19 documentation](https://docs.python.org/3.10/library/cgi.html)
-- [PEP 222 – Web Library Enhancements | peps.python.org](https://peps.python.org/pep-0222/)
-- [wsgiref — WSGI Utilities and Reference Implementation — Python 3.14.2 documentation](https://docs.python.org/3/library/wsgiref.html)
+- Read:
+  - [Common Gateway Interface - Wikipedia](https://en.wikipedia.org/wiki/Common_Gateway_Interface)
+  - [cgi — Common Gateway Interface support — Python 3.10.19 documentation](https://docs.python.org/3.10/library/cgi.html)
+  - [PEP 222 – Web Library Enhancements | peps.python.org](https://peps.python.org/pep-0222/)
+  - [wsgiref — WSGI Utilities and Reference Implementation — Python 3.14.2 documentation](https://docs.python.org/3/library/wsgiref.html)
 
 ### WSGI
 
-- [Web Server Gateway Interface - Wikipedia](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface)
-- [What is WSGI? — WSGI.org](https://wsgi.readthedocs.io/en/latest/what.html)
-- [PEP 333 – Python Web Server Gateway Interface v1.0 | peps.python.org](https://peps.python.org/pep-0333/)
-- [PEP 3333 – Python Web Server Gateway Interface v1.0.1 | peps.python.org](https://peps.python.org/pep-3333/)
+- Read:
+  - [Web Server Gateway Interface - Wikipedia](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface)
+  - [What is WSGI? — WSGI.org](https://wsgi.readthedocs.io/en/latest/what.html)
+  - [PEP 333 – Python Web Server Gateway Interface v1.0 | peps.python.org](https://peps.python.org/pep-0333/)
+  - [PEP 3333 – Python Web Server Gateway Interface v1.0.1 | peps.python.org](https://peps.python.org/pep-3333/)
+- Watch:
+  - [WSGI for Web Developers (Ryan Wilson-Perkin) - YouTube](https://www.youtube.com/watch?v=WqrCnVAkLIo)
 
 ### ASGI
 
-- [Asynchronous Server Gateway Interface - Wikipedia](https://en.wikipedia.org/wiki/Asynchronous_Server_Gateway_Interface)
-- [ASGI Documentation — ASGI 3.0 documentation](https://asgi.readthedocs.io/en/latest/)
+- Read:
+  - [Asynchronous Server Gateway Interface - Wikipedia](https://en.wikipedia.org/wiki/Asynchronous_Server_Gateway_Interface)
+  - [ASGI Documentation — ASGI 3.0 documentation](https://asgi.readthedocs.io/en/latest/)
 
 ### RSGI
 
-- [granian/docs/spec/RSGI.md at master · emmett-framework/granian](https://github.com/emmett-framework/granian/blob/master/docs/spec/RSGI.md)
+- Read:
+  - [granian/docs/spec/RSGI.md at master · emmett-framework/granian](https://github.com/emmett-framework/granian/blob/master/docs/spec/RSGI.md)
 
 ### Other
 
-- [PEP 249 – Python Database API Specification v2.0 | peps.python.org](https://peps.python.org/pep-0249/)
+- Read:
+  - [PEP 249 – Python Database API Specification v2.0 | peps.python.org](https://peps.python.org/pep-0249/)
 
 ## Frameworks
 
@@ -84,7 +91,6 @@ Learning and comparing different Python web frameworks can be challenging. This 
 | [view.py](./apps/view.py-hello-world.py)       | [Web Framework](https://view.zintensity.dev/)                          | ASGI                      |
 | [webapp2](./apps/webapp2-hello-world.py)       | [Google App Engine](https://webapp2.readthedocs.io/)                   | WSGI                      |
 | [webpy](./apps/webpy-hello-world.py)           | [Micro Framework](https://github.com/webpy/webpy)                      | WSGI                      |
-| [werkzeug](./apps/werkzeug-hello-world.py)     | [WSGI Utilities](https://werkzeug.palletsprojects.com/)                | WSGI                      |
 | [wheezy](./apps/wheezy-hello-world.py)         | [Lightweight Web Framework](https://github.com/akornatskyy/wheezy.web) | WSGI                      |
 | [robyn](./apps/robyn-hello-world.py)           | [Rust-powered Framework](https://robyn.tech/)                          | Standalone                |
 | [aiohttp](./apps/aiohttp-hello-world.py)       | [Async Web Framework](https://docs.aiohttp.org/)                       | Standalone                |
@@ -98,7 +104,7 @@ Learning and comparing different Python web frameworks can be challenging. This 
 | [daphne](https://github.com/django/daphne)             | ASGI                   |
 | [granian](https://github.com/emmett-framework/granian) | ASGI/WSGI/RSGI         |
 | [uvicorn](https://uvicorn.dev/)                        | ASGI                   |
-| [Gunicorn](https://gunicorn.org/)                      | WSGI                   |
+| [gunicorn](https://gunicorn.org/)                      | WSGI                   |
 
 <!--
 | [pywebio](./apps/pywebio-hello-world.py)         | [Web I/O Framework](https://pywebio.readthedocs.io/)            | ASGI           |
