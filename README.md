@@ -59,6 +59,7 @@ Learning and comparing different Python web frameworks can be challenging. This 
 
 - Checkout:
   - [abersheeran/a2wsgi: Convert WSGI app to ASGI app or ASGI app to WSGI app.](https://github.com/abersheeran/a2wsgi)
+  - [hasansezertasan/a2wsgi-examples: The goal of this project is to provide examples about integrating different Python Web Frameworks and how they can be used together with a2wsgi.](https://github.com/hasansezertasan/a2wsgi-examples)
 - Read:
   - [PEP 249 – Python Database API Specification v2.0 | peps.python.org](https://peps.python.org/pep-0249/)
 
