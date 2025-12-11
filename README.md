@@ -8,7 +8,7 @@ The purpose of this project is to provide "Hello World" examples in various Pyth
 
 - [Why](#why)
 - [Specification](#specification)
-- [Framework](#frameworks)
+- [Frameworks](#frameworks)
 - [Servers](#servers)
 - [How to run](#how-to-run)
 - [Contributing](#contributing)
@@ -57,6 +57,8 @@ Learning and comparing different Python web frameworks can be challenging. This 
 
 ### Other
 
+- Checkout:
+  - [abersheeran/a2wsgi: Convert WSGI app to ASGI app or ASGI app to WSGI app.](https://github.com/abersheeran/a2wsgi)
 - Read:
   - [PEP 249 – Python Database API Specification v2.0 | peps.python.org](https://peps.python.org/pep-0249/)
 
@@ -96,15 +98,24 @@ Learning and comparing different Python web frameworks can be challenging. This 
 | [aiohttp](./apps/aiohttp-hello-world.py)       | [Async Web Framework](https://docs.aiohttp.org/)                       | Standalone                |
 | [tornado](./apps/tornado-hello-world.py)       | [Async Web Framework](https://www.tornadoweb.org/)                     | Standalone                |
 
-## Servers
+## Protocol Servers
 
-| Framework                                              | Specification / Format |
+These are battle-tested production servers used to deploy your Web Application.
+
+| Project                                                | Specification / Format |
 | ------------------------------------------------------ | ---------------------- |
 | [hypercorn](https://hypercorn.readthedocs.io)          | ASGI                   |
 | [daphne](https://github.com/django/daphne)             | ASGI                   |
 | [granian](https://github.com/emmett-framework/granian) | ASGI/WSGI/RSGI         |
 | [uvicorn](https://uvicorn.dev/)                        | ASGI                   |
 | [gunicorn](https://gunicorn.org/)                      | WSGI                   |
+
+Why do we need those?
+
+Because the servers provided by the Web Frameworks are generally development servers and usage of these servers in production is discouraged.
+
+- [django-admin and manage.py | Django documentation | Django](https://docs.djangoproject.com/en/dev/ref/django-admin/#runserver)
+- [Deploy to Production — Flask Documentation (3.1.x)](https://flask.palletsprojects.com/en/stable/tutorial/deploy/#run-with-a-production-server)
 
 <!--
 | [pywebio](./apps/pywebio-hello-world.py)         | [Web I/O Framework](https://pywebio.readthedocs.io/)            | ASGI           |
