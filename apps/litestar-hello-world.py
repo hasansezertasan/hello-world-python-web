@@ -10,7 +10,7 @@ def hello_world() -> str:
     return "Hello, World!"
 
 
-def main():
+def main() -> None:
     app = Litestar(route_handlers=[hello_world])
     import uvicorn
 

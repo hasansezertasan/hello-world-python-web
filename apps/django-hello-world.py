@@ -2,12 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["django>=5.2.8"]
 # ///
-from django.http import HttpResponse
-from django.urls import path
-from django.core.management import execute_from_command_line
 import django
 from django.conf import settings
-
+from django.core.management import execute_from_command_line
+from django.http import HttpResponse
+from django.urls import path
 
 if not settings.configured:
     settings.configure(
@@ -31,7 +30,7 @@ urlpatterns = [
 ]
 
 
-def main():
+def main() -> None:
     execute_from_command_line(["manage.py", "runserver", "0.0.0.0:8000"])
 
 

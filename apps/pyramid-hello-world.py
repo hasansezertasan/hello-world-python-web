@@ -11,7 +11,7 @@ def hello_world(request):
     return Response("Hello, World!")
 
 
-def main():
+def main() -> None:
     with Configurator() as config:
         config.add_route("hello", "/")
         config.add_view(hello_world, route_name="hello")

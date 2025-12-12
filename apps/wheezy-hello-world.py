@@ -2,8 +2,7 @@
 # requires-python = ">=3.10"
 # dependencies = ["wheezy.web"]
 # ///
-"""
-Wheezy Hello World Example
+"""Wheezy Hello World Example.
 
 Wheezy is a lightweight web framework with a focus on performance.
 """

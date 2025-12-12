@@ -10,6 +10,7 @@ Try out:
 curl -v http://localhost:8000/hello -d 'Hello World!'
 ```
 """
+
 import socket
 
 RESPONSE = (
@@ -20,7 +21,8 @@ RESPONSE = (
     "Hello World!"
 )
 
-def main():
+
+def main() -> None:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         # So you can restart quickly without "Address already in use"
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -40,6 +42,7 @@ def main():
 
             # Send HTTP response
             conn.sendall(RESPONSE.encode("utf-8"))
+
 
 if __name__ == "__main__":
     main()

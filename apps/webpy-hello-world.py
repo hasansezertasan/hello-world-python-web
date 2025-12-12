@@ -8,11 +8,11 @@ urls = ("/", "hello")
 
 
 class hello:
-    def GET(self):
+    def GET(self) -> str:
         return "Hello, World!"
 
 
-def main():
+def main() -> None:
     app = web.application(urls, globals())
     app.run(web.config.listen_host, 8000)
 

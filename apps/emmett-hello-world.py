@@ -8,8 +8,9 @@ app = App(__name__)
 
 
 @app.route("/")
-async def main():
+async def main() -> str:
     return "Hello world!"
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)

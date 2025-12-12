@@ -6,11 +6,11 @@ import hug
 
 
 @hug.get("/")
-def hello_world():
+def hello_world() -> str:
     return "Hello, World!"
 
 
-def main():
+def main() -> None:
     hug.run(port=8000)
 
 

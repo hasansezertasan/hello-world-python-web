@@ -8,11 +8,11 @@ api = responder.API()
 
 
 @api.route("/")
-async def hello_world(req, resp):
+async def hello_world(req, resp) -> None:
     resp.text = "Hello, World!"
 
 
-def main():
+def main() -> None:
     api.run(port=8000)
 
 

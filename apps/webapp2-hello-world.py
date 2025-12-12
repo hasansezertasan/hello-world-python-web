@@ -6,14 +6,14 @@ import webapp2
 
 
 class HelloWorld(webapp2.RequestHandler):
-    def get(self):
+    def get(self) -> None:
         self.response.write("Hello, World!")
 
 
 app = webapp2.WSGIApplication([("/?", HelloWorld)])
 
 
-def main():
+def main() -> None:
     from wsgiref import simple_server
 
     httpd = simple_server.make_server("", 8000, app)

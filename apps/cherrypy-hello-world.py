@@ -5,14 +5,17 @@
 import cherrypy
 
 
-class HelloWorld(object):
+class HelloWorld:
     @cherrypy.expose
-    def index(self):
+    def index(self) -> str:
         return "Hello World!"
 
 
-def main():
-    cherrypy.config.update({"server.socket_port": 8000, "server.socket_host": "0.0.0.0"})
+def main() -> None:
+    cherrypy.config.update({
+        "server.socket_port": 8000,
+        "server.socket_host": "0.0.0.0",
+    })
     cherrypy.quickstart(HelloWorld())
 
 

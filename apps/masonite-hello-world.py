@@ -1,18 +1,16 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["masonite"]
+# dependencies = ["masonite", "setuptools"]
 # ///
 from masonite.foundation import Application
-from masonite.routing import Route
+from masonite.routes import Route
 
 
-def hello_world():
+def hello_world() -> str:
     return "Hello, World!"
 
 
-def main():
-    import sys
-    sys.argv = ["serve", "--port", "8000"]
+def main() -> None:
     app = Application()
     Route.get("/", hello_world)
     app.run()

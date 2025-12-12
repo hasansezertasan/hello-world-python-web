@@ -9,11 +9,11 @@ app = FastAPI()
 
 
 @app.get("/")
-def hello_world():
+def hello_world() -> str:
     return "Hello, World!"
 
 
-def main():
+def main() -> None:
     uvicorn.run(app, host="0.0.0.0", port=8000)
 
 

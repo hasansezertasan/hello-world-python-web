@@ -4,11 +4,11 @@
 # ///
 from robyn import Robyn
 
-app = Robyn()
+app = Robyn(__file__)
 
 
 @app.get("/")
-def hello_world():
+def hello_world() -> str:
     return "Hello, World!"
 
 

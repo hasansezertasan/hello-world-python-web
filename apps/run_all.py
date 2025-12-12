@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-Runner script that executes all hello-world applications.
+"""Runner script that executes all hello-world applications.
 Loops through each file ending with -hello-world.py and runs it with uv run.
 Verifies that each app serves a "hello world" message on port 8000.
 """
@@ -9,23 +8,21 @@ import subprocess
 import sys
 import time
 from pathlib import Path
-from urllib.request import urlopen
 from urllib.error import URLError
+from urllib.request import urlopen
 
 
 def verify_hello_world_response(url, timeout=5):
-    """
-    Verify if the given URL returns a response containing 'hello world' (case-insensitive).
-    Returns (success: bool, message: str)
+    """Verify if the given URL returns a response containing 'hello world' (case-insensitive).
+    Returns (success: bool, message: str).
     """
     try:
         response = urlopen(url, timeout=timeout)
-        content = response.read().decode('utf-8', errors='ignore').lower()
+        content = response.read().decode("utf-8", errors="ignore").lower()
 
-        if 'hello world' in content or 'hello' in content:
+        if "hello world" in content or "hello" in content:
             return True, "Found 'hello world' message"
-        else:
-            return False, "No 'hello world' message found in response"
+        return False, "No 'hello world' message found in response"
     except URLError as e:
         return False, f"Connection error: {e.reason}"
     except Exception as e:
@@ -33,9 +30,8 @@ def verify_hello_world_response(url, timeout=5):
 
 
 def test_app(timeout=10):
-    """
-    Test if an app is serving correctly on port 8000.
-    Returns (success: bool, message: str)
+    """Test if an app is serving correctly on port 8000.
+    Returns (success: bool, message: str).
     """
     url = "http://localhost:8000/"
 
@@ -51,7 +47,7 @@ def test_app(timeout=10):
     return False, "Server not responding on localhost:8000"
 
 
-def main():
+def main() -> int:
     # Get the directory where this script is located
     script_dir = Path(__file__).parent
 
@@ -69,9 +65,9 @@ def main():
 
     for file_path in hello_world_files:
         app_name = file_path.name
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
         print(f"Running: {app_name}")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
 
         try:
             # Start the app process
@@ -79,7 +75,7 @@ def main():
                 ["uv", "run", app_name],
                 cwd=script_dir,
                 stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE
+                stderr=subprocess.PIPE,
             )
 
             # Test if the app is serving hello world
@@ -105,9 +101,9 @@ def main():
             print(f"✗ {app_name} error: {e}\n")
 
     # Print summary
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print("SUMMARY")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"Successful: {len(successful_apps)}/{len(hello_world_files)}")
     print(f"Failed: {len(failed_apps)}/{len(hello_world_files)}")
 
@@ -118,6 +114,7 @@ def main():
         return 1
 
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())

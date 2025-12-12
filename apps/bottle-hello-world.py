@@ -6,11 +6,11 @@ from bottle import route, run
 
 
 @route("/")
-def index():
+def index() -> str:
     return "Hello World!"
 
 
-def main():
+def main() -> None:
     run(host="0.0.0.0", port=8000)
 
 

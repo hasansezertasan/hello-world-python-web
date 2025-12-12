@@ -2,19 +2,16 @@
 # requires-python = ">=3.10"
 # dependencies = ["piccolo>=1.0.0", "uvicorn>=0.20.0"]
 # ///
-"""
-Piccolo Hello World Example
+"""Piccolo Hello World Example.
 
 Piccolo is a modern async ORM with web capabilities.
 """
 
-from piccolo.conf.apps import AppRegistry
 from piccolo.web.app import App
-from piccolo.table import Table, Varchar
 
 
 # Simple handler
-async def hello_world(request):
+async def hello_world(request) -> str:
     """Handler that returns a simple hello world response."""
     return "Hello, World!"
 
@@ -23,12 +20,11 @@ async def hello_world(request):
 app = App(
     routes=[
         {"path": "/", "handler": hello_world},
-    ]
+    ],
 )
 
 
 if __name__ == "__main__":
-    import asyncio
     import uvicorn
 
     # Using uvicorn to run the app

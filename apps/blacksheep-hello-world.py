@@ -9,7 +9,7 @@ app = Application()
 
 
 @get("/")
-async def home():
+async def home() -> str:
     return "Hello, World!"
 
 

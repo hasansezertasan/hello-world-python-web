@@ -12,7 +12,7 @@ async def hello_world(request):
     return response.text("Hello, World!")
 
 
-def main():
+def main() -> None:
     app.run(host="0.0.0.0", port=8000)
 
 

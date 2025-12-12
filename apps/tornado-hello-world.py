@@ -7,11 +7,11 @@ import tornado.web
 
 
 class MainHandler(tornado.web.RequestHandler):
-    def get(self):
+    def get(self) -> None:
         self.write("Hello, World!")
 
 
-def main():
+def main() -> None:
     app = tornado.web.Application([(r"/", MainHandler)])
     app.listen(8000)
     print("Server started on port 8000")

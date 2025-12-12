@@ -2,24 +2,24 @@
 # requires-python = ">=3.10"
 # dependencies = ["pycnic>=0.1.0"]
 # ///
-"""
-Pycnic Hello World Example
+"""Pycnic Hello World Example.
 
 Pycnic is a minimalist, object-oriented REST API framework.
 """
 
-from pycnic.request import Request
-from pycnic.response import Response
-from pycnic.core import WSGI
+from pycnic.core import WSGI, Handler
 
 
-class HelloWorldHandler(WSGI):
+class HelloWorldHandler(Handler):
     def get(self):
         return {"message": "Hello, World!"}
 
 
 # Create the application
-app = HelloWorldHandler()
+class app(WSGI):
+    routes = [
+        ("/", HelloWorldHandler()),
+    ]
 
 
 if __name__ == "__main__":

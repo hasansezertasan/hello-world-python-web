@@ -6,11 +6,11 @@ import falcon
 
 
 class HelloWorld:
-    def on_get(self, req, resp):
+    def on_get(self, req, resp) -> None:
         resp.text = "Hello, World!"
 
 
-def main():
+def main() -> None:
     app = falcon.App()
     app.add_route("/", HelloWorld())
     import wsgiref.simple_server

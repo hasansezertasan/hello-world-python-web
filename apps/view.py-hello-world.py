@@ -6,11 +6,11 @@ from view import View
 
 
 class HelloWorld(View):
-    def get(self):
+    def get(self) -> str:
         return "Hello, World!"
 
 
-def main():
+def main() -> None:
     app = View()
     app.add_route("/", HelloWorld)
     app.run(port=8000)

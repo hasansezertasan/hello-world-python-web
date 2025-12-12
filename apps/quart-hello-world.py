@@ -8,11 +8,11 @@ app = Quart(__name__)
 
 
 @app.route("/")
-async def hello_world():
+async def hello_world() -> str:
     return "Hello, World!"
 
 
-def main():
+def main() -> None:
     app.run(host="0.0.0.0", port=8000)
 
 
