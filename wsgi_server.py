@@ -8,7 +8,7 @@ def app(environ, start_response):
     return [b"Hello, WSGI World!"]
 
 
-def run(app, host="127.0.0.1", port=8000) -> None:
+def run(app, host="0.0.0.0", port=8000) -> None:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.bind((host, port))

@@ -8,7 +8,7 @@ import cherrypy
 class HelloWorld:
     @cherrypy.expose
     def index(self) -> str:
-        return "Hello World!"
+        return "Hello, World!"
 
 
 def main() -> None:

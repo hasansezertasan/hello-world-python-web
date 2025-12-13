@@ -8,8 +8,13 @@ The purpose of this project is to provide "Hello World" examples in various Pyth
 
 - [Why](#why)
 - [Specification](#specification)
+  - [CGI](#cgi)
+  - [WSGI](#wsgi)
+  - [ASGI](#asgi)
+  - [RSGI](#rsgi)
+  - [Other](#other)
 - [Frameworks](#frameworks)
-- [Servers](#servers)
+- [Protocol Servers](#protocol-servers)
 - [How to run](#how-to-run)
 - [Contributing](#contributing)
 - [Author](#author)
@@ -66,51 +71,42 @@ Learning and comparing different Python web frameworks can be challenging. This 
 
 ## Frameworks
 
-| Framework                                      | External                                                               | Specification / Format    |
-| ---------------------------------------------- | ---------------------------------------------------------------------- | ------------------------- |
-| [http](./apps/http-hello-world.py)             | [Standard Library](https://docs.python.org/3/library/http.html)        | TCP                       |
-| [socket](./apps/socket-hello-world.py)         | [Standard Library](https://docs.python.org/3/library/socket.html)      | TCP                       |
-| [blacksheep](./apps/blacksheep-hello-world.py) | [Async Web Framework](https://www.blacksheep.dev/)                     | ASGI                      |
-| [bottle](./apps/bottle-hello-world.py)         | [Micro Framework](https://bottlepy.org/)                               | WSGI                      |
-| [cherrypy](./apps/cherrypy-hello-world.py)     | [Object-Oriented Framework](https://docs.cherrypy.dev/)                | WSGI                      |
-| [django](./apps/django-hello-world.py)         | [Full-Stack Framework](https://www.djangoproject.com/)                 | WSGI (has a history)      |
-| [emmett](./apps/emmett-hello-world.py)         | [Full-Stack Framework](https://emmett.sh/)                             | ASGI/WSGI (has a history) |
-| [fastapi](./apps/fastapi-hello-world.py)       | [Async API Framework](https://fastapi.tiangolo.com/)                   | Based on Starlette        |
-| [flama](./apps/flama-hello-world.py)           | [REST API Framework](https://flama.dev/)                               | Based on Starlette        |
-| [flask](./apps/flask-hello-world.py)           | [Micro Framework](https://flask.palletsprojects.com/)                  | Based on Werkzeug         |
-| [hug](./apps/hug-hello-world.py)               | [API Framework](https://www.hug.rest/)                                 | Based on Falcon           |
-| [masonite](./apps/masonite-hello-world.py)     | [Full-Stack Framework](https://docs.masoniteproject.com/)              | Based on Werkzeug         |
-| [nanodjango](./apps/nanodjango-hello-world.py) | [Minimal Django](https://nanodjango.readthedocs.io/)                   | Based on Django           |
-| [falcon](./apps/falcon-hello-world.py)         | [REST API Framework](https://falcon.readthedocs.io/)                   | ASGI/WSGI                 |
-| [litestar](./apps/litestar-hello-world.py)     | [Async Web Framework](https://docs.litestar.dev/)                      | ASGI                      |
-| [molten](./apps/molten-hello-world.py)         | [Modern Web Framework](https://molten.readthedocs.io/)                 | WSGI                      |
-| [morepath](./apps/morepath-hello-world.py)     | [Microframework](https://morepath.readthedocs.io/)                     | WSGI                      |
-| [piccolo](./apps/piccolo-hello-world.py)       | [Async ORM with Web](https://piccolo.readthedocs.io/)                  | ASGI                      |
-| [pycnic](./apps/pycnic-hello-world.py)         | [Minimalist API Framework](https://pycnic.nullism.com/)                | WSGI                      |
-| [pyramid](./apps/pyramid-hello-world.py)       | [Full-Stack Framework](https://trypyramid.com/)                        | WSGI                      |
-| [quart](./apps/quart-hello-world.py)           | [Async Web Framework](https://quart.palletsprojects.com/)              | Based on Flask but ASGI   |
-| [responder](./apps/responder-hello-world.py)   | [API Framework](https://responder.kennethreitz.org/)                   | Based on Starlette        |
-| [sanic](./apps/sanic-hello-world.py)           | [Async Web Framework](https://sanic.dev/)                              | ASGI/WSGI                 |
-| [starlette](./apps/starlette-hello-world.py)   | [Async Web Framework](https://starlette.dev/)                          | ASGI                      |
-| [view.py](./apps/view.py-hello-world.py)       | [Web Framework](https://view.zintensity.dev/)                          | ASGI                      |
-| [webapp2](./apps/webapp2-hello-world.py)       | [Google App Engine](https://webapp2.readthedocs.io/)                   | WSGI                      |
-| [webpy](./apps/webpy-hello-world.py)           | [Micro Framework](https://github.com/webpy/webpy)                      | WSGI                      |
-| [wheezy](./apps/wheezy-hello-world.py)         | [Lightweight Web Framework](https://github.com/akornatskyy/wheezy.web) | WSGI                      |
-| [robyn](./apps/robyn-hello-world.py)           | [Rust-powered Framework](https://robyn.tech/)                          | Standalone                |
-| [aiohttp](./apps/aiohttp-hello-world.py)       | [Async Web Framework](https://docs.aiohttp.org/)                       | Standalone                |
-| [tornado](./apps/tornado-hello-world.py)       | [Async Web Framework](https://www.tornadoweb.org/)                     | Standalone                |
+| Framework                                      | External                                                          | Specification / Format  |
+| ---------------------------------------------- | ----------------------------------------------------------------- | ----------------------- |
+| [http](./apps/http_hello_world.py)             | [Standard Library](https://docs.python.org/3/library/http.html)   | TCP                     |
+| [socket](./apps/socket_hello_world.py)         | [Standard Library](https://docs.python.org/3/library/socket.html) | TCP                     |
+| [blacksheep](./apps/blacksheep_hello_world.py) | [Async Web Framework](https://www.blacksheep.dev/)                | ASGI                    |
+| [bottle](./apps/bottle_hello_world.py)         | [Micro Framework](https://bottlepy.org/)                          | WSGI                    |
+| [cherrypy](./apps/cherrypy_hello_world.py)     | [Object-Oriented Framework](https://docs.cherrypy.dev/)           | WSGI                    |
+| [django](./apps/django_hello_world.py)         | [Full-Stack Framework](https://www.djangoproject.com/)            | WSGI (has a history)    |
+| [fastapi](./apps/fastapi_hello_world.py)       | [Async API Framework](https://fastapi.tiangolo.com/)              | Based on Starlette      |
+| [flask](./apps/flask_hello_world.py)           | [Micro Framework](https://flask.palletsprojects.com/)             | Based on Werkzeug       |
+| [falcon](./apps/falcon_hello_world.py)         | [REST API Framework](https://falcon.readthedocs.io/)              | ASGI/WSGI               |
+| [litestar](./apps/litestar_hello_world.py)     | [Async Web Framework](https://docs.litestar.dev/)                 | ASGI                    |
+| [morepath](./apps/morepath_hello_world.py)     | [Microframework](https://morepath.readthedocs.io/)                | WSGI                    |
+| [pycnic](./apps/pycnic_hello_world.py)         | [Minimalist API Framework](https://pycnic.nullism.com/)           | WSGI                    |
+| [pyramid](./apps/pyramid_hello_world.py)       | [Full-Stack Framework](https://trypyramid.com/)                   | WSGI                    |
+| [quart](./apps/quart_hello_world.py)           | [Async Web Framework](https://quart.palletsprojects.com/)         | Based on Flask but ASGI |
+| [sanic](./apps/sanic_hello_world.py)           | [Async Web Framework](https://sanic.dev/)                         | ASGI/WSGI               |
+| [starlette](./apps/starlette_hello_world.py)   | [Async Web Framework](https://starlette.dev/)                     | ASGI                    |
+| [robyn](./apps/robyn_hello_world.py)           | [Rust-powered Framework](https://robyn.tech/)                     | Standalone              |
+| [aiohttp](./apps/aiohttp_hello_world.py)       | [Async Web Framework](https://docs.aiohttp.org/)                  | Standalone              |
+| [tornado](./apps/tornado_hello_world.py)       | [Async Web Framework](https://www.tornadoweb.org/)                | Standalone              |
 
 ## Protocol Servers
 
 These are battle-tested production servers used to deploy your Web Application.
 
-| Project                                                | Specification / Format |
-| ------------------------------------------------------ | ---------------------- |
-| [hypercorn](https://hypercorn.readthedocs.io)          | ASGI                   |
-| [daphne](https://github.com/django/daphne)             | ASGI                   |
-| [granian](https://github.com/emmett-framework/granian) | ASGI/WSGI/RSGI         |
-| [uvicorn](https://uvicorn.dev/)                        | ASGI                   |
-| [gunicorn](https://gunicorn.org/)                      | WSGI                   |
+| Project                                                                 | Specification / Format |
+| ----------------------------------------------------------------------- | ---------------------- |
+| [uvicorn](https://uvicorn.dev/)                                         | ASGI                   |
+| [daphne](https://github.com/django/daphne)                              | ASGI                   |
+| [hypercorn](https://hypercorn.readthedocs.io)                           | ASGI                   |
+| [granian](https://github.com/emmett-framework/granian)                  | ASGI/WSGI/RSGI         |
+| [gunicorn](https://gunicorn.org/)                                       | WSGI                   |
+| [waitress](https://docs.pylonsproject.org/projects/waitress/en/latest/) | WSGI                   |
+| [uwsgi](https://uwsgi-docs.readthedocs.io/en/latest/)                   | WSGI                   |
+| [werkzeug](https://werkzeug.palletsprojects.com/)                       | WSGI                   |
 
 Why do we need those?
 
@@ -120,17 +116,29 @@ Because the servers provided by the Web Frameworks are generally development ser
 - [Deploy to Production — Flask Documentation (3.1.x)](https://flask.palletsprojects.com/en/stable/tutorial/deploy/#run-with-a-production-server)
 
 <!--
-| [pywebio](./apps/pywebio-hello-world.py)         | [Web I/O Framework](https://pywebio.readthedocs.io/)            | ASGI           |
-| [plotly-dash](./apps/plotly-dash-hello-world.py) | [Dashboard Framework](https://dash.plotly.com/)                 | WSGI           |
-| [eve](./apps/eve-hello-world.py)               | [REST API Framework](https://python-eve.org/)                     | Based on Flask |
-| [nicegui](./apps/nicegui-hello-world.py)         | [UI Framework](https://nicegui.io/)                             | ASGI           |
-| [streamlit](./apps/streamlit-hello-world.py)     | [Data App Framework](https://streamlit.io/)                     | Full-Stack     |
-| [apistar](./apps/apistar-hello-world.py)         | [Lightweight API Framework](https://github.com/encode/apistar)  | N/A            |
-| [flet](./apps/flet-hello-world.py)               | [UI Framework](https://flet.dev/)                               | Desktop/Web    |
-| [connexion](./apps/connexion-hello-world.py)     | [OpenAPI/Swagger Framework](https://connexion.readthedocs.io/)  | ASGI           |
-| [bleach](./apps/bleach-hello-world.py)           | [Security-focused HTTP Library](https://bleach.readthedocs.io/) | WSGI           |
-| [reflex](./apps/reflex-hello-world.py)           | [Reactive Framework](https://reflex.dev/)                       | Full-Stack     |
-| [gradio](./apps/gradio-hello-world.py)           | [ML Interface Framework](https://www.gradio.app/)               | ASGI           |
+| [hug](./apps/hug_hello_world.py)               | [API Framework](https://www.hug.rest/)                                 | Based on Falcon           |
+| [emmett](./apps/emmett_hello_world.py)         | [Full-Stack Framework](https://emmett.sh/)                             | ASGI/WSGI (has a history) |
+| [flama](./apps/flama_hello_world.py)           | [REST API Framework](https://flama.dev/)                               | Based on Starlette        |
+| [masonite](./apps/masonite_hello_world.py)     | [Full-Stack Framework](https://docs.masoniteproject.com/)              | Based on Werkzeug         |
+| [molten](./apps/molten_hello_world.py)         | [Modern Web Framework](https://molten.readthedocs.io/)                 | WSGI                      |
+| [piccolo](./apps/piccolo_hello_world.py)       | [Async ORM with Web](https://piccolo.readthedocs.io/)                  | ASGI                      |
+| [responder](./apps/responder_hello_world.py)   | [API Framework](https://responder.kennethreitz.org/)                   | Based on Starlette        |
+| [view.py](./apps/view_py_hello_world.py)       | [Web Framework](https://view.zintensity.dev/)                          | ASGI                      |
+| [webapp2](./apps/webapp2_hello_world.py)       | [Google App Engine](https://webapp2.readthedocs.io/)                   | WSGI                      |
+| [webpy](./apps/webpy_hello_world.py)           | [Micro Framework](https://github.com/webpy/webpy)                      | WSGI                      |
+| [wheezy](./apps/wheezy_hello_world.py)         | [Lightweight Web Framework](https://github.com/akornatskyy/wheezy.web) | WSGI                      |
+| [nanodjango](./apps/nanodjango_hello_world.py) | [Minimal Django](https://nanodjango.readthedocs.io/)                   | Based on Django           |
+| [pywebio](./apps/pywebio_hello_world.py)         | [Web I/O Framework](https://pywebio.readthedocs.io/)                 | ASGI                      |
+| [plotly-dash](./apps/plotly-dash_hello_world.py) | [Dashboard Framework](https://dash.plotly.com/)                      | WSGI                      |
+| [eve](./apps/eve_hello_world.py)               | [REST API Framework](https://python-eve.org/)                          | Based on Flask            |
+| [nicegui](./apps/nicegui_hello_world.py)         | [UI Framework](https://nicegui.io/)                                  | ASGI                      |
+| [streamlit](./apps/streamlit_hello_world.py)     | [Data App Framework](https://streamlit.io/)                          | Full-Stack                |
+| [apistar](./apps/apistar_hello_world.py)         | [Lightweight API Framework](https://github.com/encode/apistar)       | N/A                       |
+| [flet](./apps/flet_hello_world.py)               | [UI Framework](https://flet.dev/)                                    | Desktop/Web               |
+| [connexion](./apps/connexion_hello_world.py)     | [OpenAPI/Swagger Framework](https://connexion.readthedocs.io/)       | ASGI                      |
+| [bleach](./apps/bleach_hello_world.py)           | [Security-focused HTTP Library](https://bleach.readthedocs.io/)      | WSGI                      |
+| [reflex](./apps/reflex_hello_world.py)           | [Reactive Framework](https://reflex.dev/)                            | Full-Stack                |
+| [gradio](./apps/gradio_hello_world.py)           | [ML Interface Framework](https://www.gradio.app/)                    | ASGI                      |
 -->
 
 ## How to run
@@ -140,7 +148,7 @@ Each framework has its own implementation file in the `apps/` folder. To run any
 Simply run:
 
 ```sh
-uv run apps/<framework-name>-hello-world.py
+uv run apps/<framework-name>_hello_world.py
 ```
 
 Or use the runner script to test all implementations:
@@ -151,8 +159,8 @@ uv run apps/run_all.py
 
 The runner script will:
 
-- Execute each hello-world application with `uv run`
-- Verify that each app responds with a "hello world" message on port 8000
+- Execute each hello_world application with `uv run`
+- Verify that each app responds with a "Hello, World!" message on port 8000
 - Display a summary of successful and failed implementations
 
 If this does not work, please refer to the specific implementation file for more details.

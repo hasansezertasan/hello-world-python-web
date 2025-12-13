@@ -7,14 +7,14 @@ from pyramid.response import Response
 from waitress import serve
 
 
-def hello_world(request):
+def root(request):
     return Response("Hello, World!")
 
 
 def main() -> None:
     with Configurator() as config:
         config.add_route("hello", "/")
-        config.add_view(hello_world, route_name="hello")
+        config.add_view(root, route_name="hello")
         app = config.make_wsgi_app()
     serve(app, host="0.0.0.0", port=8000)
 

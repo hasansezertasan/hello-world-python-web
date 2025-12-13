@@ -11,9 +11,13 @@ app = Application()
 
 
 @app.route("/")
-async def hello_world(**server) -> str:
+async def root(**server) -> str:
     return "Hello, World!"
 
 
-if __name__ == "__main__":
+def main() -> None:
     app.run("0.0.0.0", 8000, debug=True)
+
+
+if __name__ == "__main__":
+    main()

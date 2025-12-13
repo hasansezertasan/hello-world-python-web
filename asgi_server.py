@@ -6,7 +6,7 @@ class ASGIServer:
     def __init__(
         self,
         app: Callable[[dict, Callable, Callable], object],
-        host: str = "127.0.0.1",
+        host: str = "0.0.0.0",
         port: int = 8000,
     ) -> None:
         self.app = app

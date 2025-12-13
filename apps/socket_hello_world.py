@@ -7,7 +7,7 @@
 Try out:
 
 ```sh
-curl -v http://localhost:8000/hello -d 'Hello World!'
+curl -v http://0.0.0.0:8000/hello -d 'Hello, World!'
 ```
 """
 
@@ -18,7 +18,7 @@ RESPONSE = (
     "Content-Type: text/plain; charset=utf-8\r\n"
     "Content-Length: 12\r\n"
     "\r\n"
-    "Hello World!"
+    "Hello, World!"
 )
 
 
@@ -27,7 +27,7 @@ def main() -> None:
         # So you can restart quickly without "Address already in use"
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-        s.bind(("localhost", 8000))
+        s.bind(("0.0.0.0", 8000))
         s.listen(1)
         print("Server listening on port 8000...")
 

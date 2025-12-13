@@ -8,7 +8,7 @@ app = Sanic("hello_world")
 
 
 @app.route("/")
-async def hello_world(request):
+async def root(request):
     return response.text("Hello, World!")
 
 

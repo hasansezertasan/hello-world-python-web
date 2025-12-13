@@ -1,9 +1,9 @@
-"""ASGI Hello World Example.
+"""ASGI Hello, World! Example.
 
 Run with:
-    - Uvicorn: `uvx uvicorn --host 127.0.0.1 --port 8000 asgi:app`
-    - Daphne: `uvx daphne --bind 127.0.0.1 --port 8000 asgi:app`
-    - Granian: `uvx granian --host 127.0.0.1 --port 8000 asgi:app`
+    - Uvicorn: `uvx uvicorn --host 0.0.0.0 --port 8000 asgi:app`
+    - Daphne: `uvx daphne --bind 0.0.0.0 --port 8000 asgi:app`
+    - Granian: `uvx granian --host 0.0.0.0 --port 8000 asgi:app`
     - Hypercorn: `uvx hypercorn asgi:app`
 """
 

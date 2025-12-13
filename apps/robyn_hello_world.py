@@ -8,9 +8,13 @@ app = Robyn(__file__)
 
 
 @app.get("/")
-def hello_world() -> str:
+def root() -> str:
     return "Hello, World!"
 
 
-if __name__ == "__main__":
+def main() -> None:
     app.start(port=8000)
+
+
+if __name__ == "__main__":
+    main()

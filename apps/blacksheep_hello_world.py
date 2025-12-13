@@ -1,15 +1,15 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["flama>=1.12.1"]
+# dependencies = ["blacksheep>=2.4.5", "uvicorn>=0.38.0"]
 # ///
 import uvicorn
-from flama import Flama
+from blacksheep import Application, get
 
-app = Flama()
+app = Application()
 
 
-@app.route("/")
-def hello_world() -> str:
+@get("/")
+async def home() -> str:
     return "Hello, World!"
 
 

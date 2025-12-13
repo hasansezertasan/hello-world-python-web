@@ -21,12 +21,12 @@ if not settings.configured:
     django.setup()
 
 
-def hello_world(request):
+def root(request):
     return HttpResponse("Hello, World!")
 
 
 urlpatterns = [
-    path("", hello_world),
+    path("", root),
 ]
 
 

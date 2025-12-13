@@ -1,14 +1,14 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["flask>=3.1.2"]
+# dependencies = ["quart"]
 # ///
-from flask import Flask
+from quart import Quart
 
-app = Flask(__name__)
+app = Quart(__name__)
 
 
 @app.route("/")
-def hello_world() -> str:
+async def root() -> str:
     return "Hello, World!"
 
 

@@ -9,7 +9,7 @@ app = FastAPI()
 
 
 @app.get("/")
-def hello_world() -> str:
+def root() -> str:
     return "Hello, World!"
 
 

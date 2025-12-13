@@ -15,7 +15,7 @@ def main() -> None:
     app.add_route("/", HelloWorld())
     import wsgiref.simple_server
 
-    httpd = wsgiref.simple_server.make_server("", 8000, app)
+    httpd = wsgiref.simple_server.make_server("0.0.0.0", 8000, app)
     httpd.serve_forever()
 
 

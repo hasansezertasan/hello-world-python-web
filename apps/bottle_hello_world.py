@@ -1,17 +1,17 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["hug>=2.6.1"]
+# dependencies = ["bottle>=0.13.4"]
 # ///
-import hug
+from bottle import route, run
 
 
-@hug.get("/")
-def hello_world() -> str:
+@route("/")
+def index() -> str:
     return "Hello, World!"
 
 
 def main() -> None:
-    hug.run(port=8000)
+    run(host="0.0.0.0", port=8000)
 
 
 if __name__ == "__main__":
