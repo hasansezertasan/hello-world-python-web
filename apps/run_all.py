@@ -36,13 +36,13 @@ def test_app(timeout: int):
     url = "http://0.0.0.0:8000/"
 
     # Give the app some time to start
-    for attempt in range(5):
+    for attempt in range(10):
         success, message = verify_hello_world_response(url, timeout=timeout)
         if success:
             return True, message
 
-        if attempt < 4:
-            time.sleep(1)
+        if attempt < 9:
+            time.sleep(2)
 
     return False, "Server not responding on 0.0.0.0:8000"
 
