@@ -18,14 +18,14 @@ class HelloWorldHandler(Handler):
 
 
 # Create the application
-class app(WSGI):
+class App(WSGI):
     routes = [
         ("/", HelloWorldHandler()),
     ]
 
 
 def main() -> None:
-    server = make_server("0.0.0.0", 8000, app)
+    server = make_server("0.0.0.0", 8000, App)
     print("Server running on http://0.0.0.0:8000")
     server.serve_forever()
 

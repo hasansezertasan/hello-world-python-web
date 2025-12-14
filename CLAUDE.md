@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This repository contains "Hello, World!" implementations for 50+ Python web frameworks and tools. The purpose is to provide standardized examples for comparing syntax, structure, and minimal setup across different frameworks.
+This repository contains "Hello, World!" implementations for 30+ Python web frameworks and tools. The purpose is to provide standardized examples for comparing syntax, structure, and minimal setup across different frameworks.
 
 ## Project Structure
 
@@ -17,7 +17,7 @@ The repository is organized around web protocol specifications:
 
 ### Key Files
 
-- `apps/*_hello_world.py`: Individual framework implementations (20 files)
+- `apps/*_hello_world.py`: Individual framework implementations (30+ files)
 - `apps/run_all.py`: Test runner that verifies all implementations
 - `wsgi.py`: Bare WSGI application callable
 - `asgi.py`: Bare ASGI application callable

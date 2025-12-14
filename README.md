@@ -28,7 +28,7 @@ The purpose of this project is to provide "Hello World" examples in various Pyth
 
 ## Why
 
-Learning and comparing different Python web frameworks can be challenging. This project provides a standardized "Hello World" implementation across 31 different frameworks, making it easy to:
+Learning and comparing different Python web frameworks can be challenging. This project provides a standardized "Hello World" implementation across 30+ different frameworks, making it easy to:
 
 - Compare syntax and structure across frameworks
 - Get started quickly with any framework

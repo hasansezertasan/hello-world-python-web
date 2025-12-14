@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["httpx>=0.27.0"]
+# dependencies = []
 # ///
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
