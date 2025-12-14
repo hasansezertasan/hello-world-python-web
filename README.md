@@ -102,7 +102,6 @@ Learning and comparing different Python web frameworks can be challenging. This 
 | [aiohttp](./apps/aiohttp_hello_world.py)       | [Async Web Framework](https://docs.aiohttp.org/)                   | Standalone              |
 | [tornado](./apps/tornado_hello_world.py)       | [Async Web Framework](https://www.tornadoweb.org/)                 | Standalone              |
 | [tremolo](./apps/tremolo_hello_world.py)       | [Async Web Framework](https://github.com/nggit/tremolo)            | Standalone              |
-| [backendpy](./apps/backendpy_hello_world.py)   | [Async Web Framework](https://github.com/EndFramework/backendpy)   | ASGI                    |
 | [circuits](./apps/circuits_hello_world.py)     | [Event-Driven Framework](https://circuitsframework.com/)           | WSGI                    |
 | [clastic](./apps/clastic_hello_world.py)       | [Functional Web Framework](https://clastic.readthedocs.io/)        | WSGI                    |
 | [dash](./apps/dash_hello_world.py)             | [Dashboard Framework](https://dash.plotly.com/)                    | WSGI                    |
