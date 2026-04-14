@@ -12,42 +12,87 @@ jobs:
     outputs:
       apps: ${{ steps.find-apps.outputs.apps }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - id: find-apps
         run: |
           apps=$(ls apps/*_hello_world.py | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          count=$(echo "$apps" | jq 'length')
+          echo "Found $count apps"
+          if [ "$count" -eq 0 ]; then
+            echo "::error::No hello_world apps found"
+            exit 1
+          fi
           echo "apps=$apps" >> "$GITHUB_OUTPUT"
 
   smoke-test:
     needs: discover
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     strategy:
       fail-fast: false
       matrix:
         app: ${{ fromJson(needs.discover.outputs.apps) }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57 # v8.0.0
+        with:
+          enable-cache: true
       - name: Run ${{ matrix.app }}
+        env:
+          APP: ${{ matrix.app }}
         run: |
-          uv run ${{ matrix.app }} &
+          # Verify port 8000 is free
+          if curl -sf -o /dev/null http://localhost:8000 2>/dev/null; then
+            echo "::error::Port 8000 is already in use"
+            exit 1
+          fi
+
+          # Start the app, capture output to log files
+          uv run "$APP" > /tmp/app-stdout.log 2> /tmp/app-stderr.log &
           APP_PID=$!
+          trap 'kill $APP_PID 2>/dev/null || true' EXIT
 
           # Wait for the server to be ready
+          READY=false
           for i in $(seq 1 15); do
-            if curl -s -o /dev/null -w '' http://localhost:8000 2>/dev/null; then
+            if ! kill -0 "$APP_PID" 2>/dev/null; then
+              echo "::error::$APP exited prematurely (exit code: $(wait $APP_PID; echo $?))"
+              cat /tmp/app-stdout.log || true
+              cat /tmp/app-stderr.log || true
+              exit 1
+            fi
+            if curl -sf -o /dev/null http://localhost:8000 2>/dev/null; then
+              READY=true
               break
             fi
             sleep 1
           done
 
-          # Test the response
-          RESPONSE=$(curl -s -f http://localhost:8000)
-          kill $APP_PID 2>/dev/null || true
-
-          if echo "$RESPONSE" | grep -q "Hello, World!"; then
-            echo "✓ ${{ matrix.app }}: Hello, World!"
-          else
-            echo "✗ ${{ matrix.app }}: Expected 'Hello, World!', got '$RESPONSE'"
+          if [ "$READY" != "true" ]; then
+            echo "::error::$APP did not become ready within 15 seconds"
+            cat /tmp/app-stdout.log || true
+            cat /tmp/app-stderr.log || true
             exit 1
           fi
+
+          # Test the response
+          RESPONSE=$(curl -sf http://localhost:8000) || {
+            echo "::error::curl failed against $APP"
+            cat /tmp/app-stdout.log || true
+            cat /tmp/app-stderr.log || true
+            exit 1
+          }
+
+          if echo "$RESPONSE" | grep -q "Hello, World!"; then
+            echo "✓ $APP: Hello, World!"
+          else
+            echo "✗ $APP: Expected 'Hello, World!', got '$RESPONSE'"
+            exit 1
+          fi
+      - name: Upload logs
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: logs-${{ matrix.app }}
+          path: /tmp/app-*.log
+          retention-days: 7
