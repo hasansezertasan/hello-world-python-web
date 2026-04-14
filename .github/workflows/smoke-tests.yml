@@ -42,7 +42,7 @@ jobs:
           APP: ${{ matrix.app }}
         run: |
           # Verify port 8000 is free
-          if curl -sf -o /dev/null http://localhost:8000 2>/dev/null; then
+          if curl -sf -o /dev/null http://127.0.0.1:8000 2>/dev/null; then
             echo "::error::Port 8000 is already in use"
             exit 1
           fi
@@ -66,7 +66,7 @@ jobs:
               cat /tmp/app-stderr.log || true
               exit 1
             fi
-            if curl -sf -o /dev/null http://localhost:8000 2>/dev/null; then
+            if curl -sf -o /dev/null http://127.0.0.1:8000 2>/dev/null; then
               READY=true
               break
             fi
@@ -81,7 +81,7 @@ jobs:
           fi
 
           # Test the response
-          RESPONSE=$(curl -sf http://localhost:8000) || {
+          RESPONSE=$(curl -sf http://127.0.0.1:8000) || {
             echo "::error::curl failed against $APP"
             cat /tmp/app-stdout.log || true
             cat /tmp/app-stderr.log || true

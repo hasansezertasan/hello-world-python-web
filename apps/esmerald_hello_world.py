@@ -1,6 +1,6 @@
 # /// script
-# requires-python = ">=3.10"
-# dependencies = ["esmerald>=3.10.0", "uvicorn>=0.38.0"]
+# requires-python = ">=3.10,<3.14"
+# dependencies = ["esmerald>=3.9.4", "uvicorn>=0.38.0"]
 # ///
 import uvicorn
 from esmerald import Esmerald, Gateway, JSONResponse, get

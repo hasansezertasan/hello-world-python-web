@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["hug", "legacy-cgi"]
+# dependencies = ["hug", "legacy-cgi", "setuptools"]
 # ///
 import hug
 from wsgiref.simple_server import make_server
