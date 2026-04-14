@@ -89,10 +89,15 @@ jobs:
             echo "✗ $APP: Expected 'Hello, World!', got '$RESPONSE'"
             exit 1
           fi
+      - name: Sanitize artifact name
+        if: failure()
+        env:
+          APP: ${{ matrix.app }}
+        run: echo "ARTIFACT_NAME=logs-$(echo "$APP" | tr '/' '-' | sed 's/\.py$//')" >> "$GITHUB_ENV"
       - name: Upload logs
         if: failure()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: logs-${{ matrix.app }}
+          name: ${{ env.ARTIFACT_NAME }}
           path: /tmp/app-*.log
           retention-days: 7
