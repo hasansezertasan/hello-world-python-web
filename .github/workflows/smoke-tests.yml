@@ -1,0 +1,53 @@
+name: Smoke Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.find-apps.outputs.apps }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: find-apps
+        run: |
+          apps=$(ls apps/*_hello_world.py | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "apps=$apps" >> "$GITHUB_OUTPUT"
+
+  smoke-test:
+    needs: discover
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJson(needs.discover.outputs.apps) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Run ${{ matrix.app }}
+        run: |
+          uv run ${{ matrix.app }} &
+          APP_PID=$!
+
+          # Wait for the server to be ready
+          for i in $(seq 1 15); do
+            if curl -s -o /dev/null -w '' http://localhost:8000 2>/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+
+          # Test the response
+          RESPONSE=$(curl -s -f http://localhost:8000)
+          kill $APP_PID 2>/dev/null || true
+
+          if echo "$RESPONSE" | grep -q "Hello, World!"; then
+            echo "✓ ${{ matrix.app }}: Hello, World!"
+          else
+            echo "✗ ${{ matrix.app }}: Expected 'Hello, World!', got '$RESPONSE'"
+            exit 1
+          fi
