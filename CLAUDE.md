@@ -18,11 +18,11 @@ The repository is organized around web protocol specifications:
 ### Key Files
 
 - `apps/*_hello_world.py`: Individual framework implementations (30+ files)
-- `apps/run_all.py`: Test runner that verifies all implementations
 - `wsgi.py`: Bare WSGI application callable
 - `asgi.py`: Bare ASGI application callable
 - `wsgi_server.py`: Custom WSGI server implementation using sockets
 - `asgi_server.py`: Custom ASGI server implementation using asyncio
+- `.github/workflows/smoke-tests.yml`: CI smoke tests (dynamic matrix, one job per app)
 
 ## Running Applications
 
@@ -34,17 +34,28 @@ uv run apps/<framework-name>_hello_world.py
 
 Each app starts on port 8000 and returns "Hello, World!" at the root path.
 
-### Testing All Implementations
+### Smoke Tests
+
+All implementations are tested automatically via GitHub Actions. The workflow dynamically discovers `apps/*_hello_world.py` files and runs each as an isolated matrix job: `uv run` → wait for server → `curl` → assert "Hello, World!". New apps are automatically picked up.
+
+To smoke-test a single app locally:
 
 ```sh
-uv run apps/run_all.py
+uv run apps/<framework>_hello_world.py &
+curl -sf http://localhost:8000  # Should return "Hello, World!"
+kill %1
 ```
 
-This runner:
-1. Executes each `*_hello_world.py` file in `apps/`
-2. Verifies HTTP 200 response with "Hello, World!" content on port 8000
-3. Kills processes occupying port 8000 between tests (uses `lsof` and `kill`)
-4. Reports success/failure summary
+To run all apps:
+
+```sh
+for app in apps/*_hello_world.py; do
+  uv run "$app" &
+  sleep 3
+  curl -sf http://localhost:8000 && echo " ✓ $app" || echo " ✗ $app"
+  kill %1 2>/dev/null; wait 2>/dev/null
+done
+```
 
 ## Code Conventions
 
@@ -138,6 +149,3 @@ async def app(scope, receive, send) -> None:
 ## Git Workflow
 
 Main branch: `main`
-Current working branch: `feat/implementations`
-
-Recent refactoring renamed files from hyphenated to underscored format (e.g., `flask-hello-world.py` → `flask_hello_world.py`).

@@ -144,23 +144,28 @@ Because the servers provided by the Web Frameworks are generally development ser
 
 Each framework has its own implementation file in the `apps/` folder. To run any example:
 
-Simply run:
-
 ```sh
 uv run apps/<framework-name>_hello_world.py
 ```
 
-Or use the runner script to test all implementations:
+### Smoke Tests
+
+All implementations are automatically tested in CI via GitHub Actions (one matrix job per app). To smoke-test locally:
 
 ```sh
-uv run apps/run_all.py
+# Single app
+uv run apps/flask_hello_world.py &
+curl -sf http://localhost:8000  # Should return "Hello, World!"
+kill %1
+
+# All apps
+for app in apps/*_hello_world.py; do
+  uv run "$app" &
+  sleep 3
+  curl -sf http://localhost:8000 && echo " ✓ $app" || echo " ✗ $app"
+  kill %1 2>/dev/null; wait 2>/dev/null
+done
 ```
-
-The runner script will:
-
-- Execute each hello_world application with `uv run`
-- Verify that each app responds with a "Hello, World!" message on port 8000
-- Display a summary of successful and failed implementations
 
 If this does not work, please refer to the specific implementation file for more details.
 
