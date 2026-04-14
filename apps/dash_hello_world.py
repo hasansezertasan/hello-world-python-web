@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["dash"]
+# dependencies = ["dash>=3.3.0"]
 # ///
 import dash
 from dash import html

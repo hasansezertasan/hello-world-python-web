@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["circuits"]
+# dependencies = ["circuits", "legacy-cgi"]
 # ///
 from circuits.web import Controller, Server
 
