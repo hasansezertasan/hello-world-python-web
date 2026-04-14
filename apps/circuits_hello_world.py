@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["circuits"]
+# dependencies = ["circuits", "legacy-cgi"]
 # ///
 from circuits.web import Controller, Server
 
@@ -11,7 +11,7 @@ class Root(Controller):
 
 
 def main() -> None:
-    (Server(8000) + Root()).run()
+    (Server(("0.0.0.0", 8000)) + Root()).run()
 
 
 if __name__ == "__main__":

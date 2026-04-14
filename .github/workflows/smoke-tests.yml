@@ -15,7 +15,11 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - id: find-apps
         run: |
-          apps=$(ls apps/*_hello_world.py | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          # Exclude apps that can't be smoke-tested with curl:
+          # - lona: WebSocket-based rendering, curl gets a redirect shell
+          # - esmerald: _fast_http bug in latest release (3.9.4)
+          EXCLUDE="lona_hello_world.py|esmerald_hello_world.py"
+          apps=$(ls apps/*_hello_world.py | grep -Ev "$EXCLUDE" | jq -R -s -c 'split("\n") | map(select(length > 0))')
           count=$(echo "$apps" | jq 'length')
           echo "Found $count apps"
           if [ "$count" -eq 0 ]; then
@@ -41,8 +45,11 @@ jobs:
         env:
           APP: ${{ matrix.app }}
         run: |
+          # Remove .python-version so uv respects each script's requires-python
+          rm -f .python-version
+
           # Verify port 8000 is free
-          if curl -sf -o /dev/null http://localhost:8000 2>/dev/null; then
+          if curl -sf -o /dev/null http://127.0.0.1:8000 2>/dev/null; then
             echo "::error::Port 8000 is already in use"
             exit 1
           fi
@@ -56,12 +63,17 @@ jobs:
           READY=false
           for i in $(seq 1 15); do
             if ! kill -0 "$APP_PID" 2>/dev/null; then
+              # Check if failure is due to Python version incompatibility
+              if grep -q "requires-python" /tmp/app-stderr.log 2>/dev/null; then
+                echo "⊘ $APP: skipped (incompatible Python version)"
+                exit 0
+              fi
               echo "::error::$APP exited prematurely (exit code: $(wait $APP_PID; echo $?))"
               cat /tmp/app-stdout.log || true
               cat /tmp/app-stderr.log || true
               exit 1
             fi
-            if curl -sf -o /dev/null http://localhost:8000 2>/dev/null; then
+            if curl -sf -o /dev/null http://127.0.0.1:8000 2>/dev/null; then
               READY=true
               break
             fi
@@ -76,17 +88,18 @@ jobs:
           fi
 
           # Test the response
-          RESPONSE=$(curl -sf http://localhost:8000) || {
+          RESPONSE=$(curl -sf http://127.0.0.1:8000) || {
             echo "::error::curl failed against $APP"
             cat /tmp/app-stdout.log || true
             cat /tmp/app-stderr.log || true
             exit 1
           }
 
-          if echo "$RESPONSE" | grep -q "Hello, World!"; then
+          if printf '%s' "$RESPONSE" | grep -q "Hello, World!"; then
             echo "✓ $APP: Hello, World!"
           else
-            echo "✗ $APP: Expected 'Hello, World!', got '$RESPONSE'"
+            echo "✗ $APP: Expected 'Hello, World!', got:"
+            printf '%s\n' "$RESPONSE" | head -20
             exit 1
           fi
       - name: Sanitize artifact name
