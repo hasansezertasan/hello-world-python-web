@@ -105,7 +105,7 @@ Learning and comparing different Python web frameworks can be challenging. This 
 | [circuits](./apps/circuits_hello_world.py)     | [Event-Driven Framework](https://circuitsframework.com/)           | WSGI                    |
 | [clastic](./apps/clastic_hello_world.py)       | [Functional Web Framework](https://clastic.readthedocs.io/)        | WSGI                    |
 | [dash](./apps/dash_hello_world.py)             | [Dashboard Framework](https://dash.plotly.com/)                    | WSGI                    |
-| [esmerald](./apps/esmerald_hello_world.py)     | [Async Web Framework](https://esmerald.dev/)                       | ASGI                    |
+| [ravyn](./apps/ravyn_hello_world.py)           | [Async Web Framework](https://github.com/dymmond/ravyn)            | ASGI                    |
 | [hug](./apps/hug_hello_world.py)               | [API Framework](https://hugapi.github.io/)                         | WSGI                    |
 | [klein](./apps/klein_hello_world.py)           | [Micro Framework](https://klein.readthedocs.io/)                   | WSGI                    |
 | [lona](./apps/lona_hello_world.py)             | [Pure Python Framework](https://lona-web.org/)                     | ASGI                    |

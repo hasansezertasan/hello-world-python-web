@@ -2,16 +2,20 @@
 # requires-python = ">=3.10,<3.14"
 # dependencies = ["lona"]
 # ///
-from lona import LonaApp, LonaView
-from lona.html import H1, HTML
+from lona import LonaApp, LonaView, Route
+from lona.responses import Response
 
 app = LonaApp(__file__)
 
 
-@app.route("/")
 class HelloView(LonaView):
     def handle_request(self, request):
-        return HTML(H1("Hello, World!"))
+        return Response(text="Hello, World!", status=200)
+
+
+app.routes = [
+    Route("/", HelloView, http_pass_through=True),
+]
 
 
 def main() -> None:
