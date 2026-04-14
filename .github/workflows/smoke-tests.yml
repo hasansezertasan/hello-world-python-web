@@ -41,6 +41,9 @@ jobs:
         env:
           APP: ${{ matrix.app }}
         run: |
+          # Remove .python-version so uv respects each script's requires-python
+          rm -f .python-version
+
           # Verify port 8000 is free
           if curl -sf -o /dev/null http://127.0.0.1:8000 2>/dev/null; then
             echo "::error::Port 8000 is already in use"
@@ -88,10 +91,11 @@ jobs:
             exit 1
           }
 
-          if echo "$RESPONSE" | grep -q "Hello, World!"; then
+          if printf '%s' "$RESPONSE" | grep -q "Hello, World!"; then
             echo "✓ $APP: Hello, World!"
           else
-            echo "✗ $APP: Expected 'Hello, World!', got '$RESPONSE'"
+            echo "✗ $APP: Expected 'Hello, World!', got:"
+            printf '%s\n' "$RESPONSE" | head -20
             exit 1
           fi
       - name: Sanitize artifact name
