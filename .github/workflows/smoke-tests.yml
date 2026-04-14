@@ -15,7 +15,11 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - id: find-apps
         run: |
-          apps=$(ls apps/*_hello_world.py | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          # Exclude apps that can't be smoke-tested with curl:
+          # - lona: WebSocket-based rendering, curl gets a redirect shell
+          # - esmerald: _fast_http bug in latest release (3.9.4)
+          EXCLUDE="lona_hello_world.py|esmerald_hello_world.py"
+          apps=$(ls apps/*_hello_world.py | grep -Ev "$EXCLUDE" | jq -R -s -c 'split("\n") | map(select(length > 0))')
           count=$(echo "$apps" | jq 'length')
           echo "Found $count apps"
           if [ "$count" -eq 0 ]; then
