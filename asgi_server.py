@@ -76,15 +76,19 @@ class ASGIServer:
 # Example ASGI application
 async def app(scope, receive, send) -> None:
     if scope["type"] == "http":
-        await send({
-            "type": "http.response.start",
-            "status": 200,
-            "headers": [[b"content-type", b"text/plain"]],
-        })
-        await send({
-            "type": "http.response.body",
-            "body": b"Hello, ASGI World!",
-        })
+        await send(
+            {
+                "type": "http.response.start",
+                "status": 200,
+                "headers": [[b"content-type", b"text/plain"]],
+            }
+        )
+        await send(
+            {
+                "type": "http.response.body",
+                "body": b"Hello, ASGI World!",
+            }
+        )
 
 
 if __name__ == "__main__":

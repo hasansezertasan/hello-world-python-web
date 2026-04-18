@@ -12,10 +12,12 @@ class HelloWorld:
 
 
 def main() -> None:
-    cherrypy.config.update({
-        "server.socket_port": 8000,
-        "server.socket_host": "0.0.0.0",
-    })
+    cherrypy.config.update(
+        {
+            "server.socket_port": 8000,
+            "server.socket_host": "0.0.0.0",
+        }
+    )
     cherrypy.quickstart(HelloWorld())
 
 
