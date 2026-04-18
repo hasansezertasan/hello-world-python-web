@@ -57,6 +57,7 @@ class ReviewConventionTests(unittest.TestCase):
         self.assertNotIn("tempfile", source)
         self.assertNotIn("mkdtemp", source)
         self.assertIn('"apps.connexion_hello_world:app"', source)
+        self.assertIn("sys.path.insert(0, str(ROOT))", source)
 
     def test_granian_examples_use_importable_targets(self) -> None:
         cases = {

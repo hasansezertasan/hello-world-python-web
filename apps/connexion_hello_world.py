@@ -2,7 +2,15 @@
 # requires-python = ">=3.10"
 # dependencies = ["connexion[uvicorn]>=3.3.0", "pyyaml>=6.0"]
 # ///
+from pathlib import Path
+import sys
+
 import connexion
+
+ROOT = Path(__file__).resolve().parent.parent
+
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 OPENAPI_SPEC = {
     "openapi": "3.0.0",
