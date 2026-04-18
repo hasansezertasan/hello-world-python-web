@@ -13,12 +13,16 @@ async def app(scope, receive, send) -> None:
     if scope["type"] != "http":
         msg = "Only the HTTP protocol is supported"
         raise Exception(msg)
-    await send({
-        "type": "http.response.start",
-        "status": 200,
-        "headers": [[b"content-type", b"text/plain"]],
-    })
-    await send({
-        "type": "http.response.body",
-        "body": b"Hello, World!",
-    })
+    await send(
+        {
+            "type": "http.response.start",
+            "status": 200,
+            "headers": [[b"content-type", b"text/plain"]],
+        }
+    )
+    await send(
+        {
+            "type": "http.response.body",
+            "body": b"Hello, World!",
+        }
+    )

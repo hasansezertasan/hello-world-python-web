@@ -7,12 +7,12 @@ from wsgiref.simple_server import make_server
 
 
 @hug.get("/")
-def hello():
+def hello() -> str:
     return "Hello, World!"
 
 
 def main() -> None:
-    server = make_server("0.0.0.0", 8000, __hug_wsgi__)
+    server = make_server("0.0.0.0", 8000, __hug_wsgi__)  # noqa: F821
     server.serve_forever()
 
 
