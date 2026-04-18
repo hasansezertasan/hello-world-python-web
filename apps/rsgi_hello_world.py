@@ -18,7 +18,7 @@ async def app(scope, protocol):
 
 def main() -> None:
     server = Granian(
-        f"{__name__}:app",
+        "apps.rsgi_hello_world:app",
         address="0.0.0.0",
         port=8000,
         interface="rsgi",

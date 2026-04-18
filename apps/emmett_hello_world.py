@@ -15,7 +15,7 @@ async def root() -> str:
 
 def main() -> None:
     server = Granian(
-        f"{__name__}:app",
+        "apps.emmett_hello_world:app",
         address="0.0.0.0",
         port=8000,
         interface="asgi",

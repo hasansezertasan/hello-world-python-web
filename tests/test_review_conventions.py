@@ -14,10 +14,7 @@ def find_function(
     module: ast.Module, name: str
 ) -> ast.FunctionDef | ast.AsyncFunctionDef:
     for node in module.body:
-        if (
-            isinstance(node, ast.FunctionDef | ast.AsyncFunctionDef)
-            and node.name == name
-        ):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == name:
             return node
     msg = f"Function {name!r} not found"
     raise AssertionError(msg)
@@ -56,7 +53,22 @@ class ReviewConventionTests(unittest.TestCase):
 
     def test_connexion_operation_id_points_to_root(self) -> None:
         source = (ROOT / "apps/connexion_hello_world.py").read_text()
-        self.assertIn('"operationId": "connexion_hello_world.root"', source)
+        self.assertIn('"operationId": "apps.connexion_hello_world.root"', source)
+        self.assertNotIn("tempfile", source)
+        self.assertNotIn("mkdtemp", source)
+        self.assertIn('"apps.connexion_hello_world:app"', source)
+
+    def test_granian_examples_use_importable_targets(self) -> None:
+        cases = {
+            "apps/emmett_hello_world.py": '"apps.emmett_hello_world:app"',
+            "apps/rsgi_hello_world.py": '"apps.rsgi_hello_world:app"',
+        }
+
+        for path, target in cases.items():
+            with self.subTest(path=path):
+                source = (ROOT / path).read_text()
+                self.assertIn(target, source)
+                self.assertNotIn('f"{__name__}:app"', source)
 
     def test_rsgi_app_uses_explicit_protocol_check(self) -> None:
         module = parse_module("apps/rsgi_hello_world.py")
