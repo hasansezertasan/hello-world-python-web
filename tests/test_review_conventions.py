@@ -64,6 +64,8 @@ class ReviewConventionTests(unittest.TestCase):
             "apps/rsgi_hello_world.py": '"apps.rsgi_hello_world:app"',
         }
 
+        self.assertTrue((ROOT / "apps" / "__init__.py").exists())
+
         for path, target in cases.items():
             with self.subTest(path=path):
                 source = (ROOT / path).read_text()
