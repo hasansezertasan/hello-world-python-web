@@ -1,9 +1,9 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["emmett>=2.7.1", "uvicorn>=0.34.0"]
+# dependencies = ["emmett>=2.7.1", "granian>=2.5.0"]
 # ///
-import uvicorn
 from emmett import App
+from granian import Granian
 
 app = App(__name__)
 
@@ -14,7 +14,13 @@ async def root() -> str:
 
 
 def main() -> None:
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    server = Granian(
+        f"{__name__}:app",
+        address="0.0.0.0",
+        port=8000,
+        interface="asgi",
+    )
+    server.serve()
 
 
 if __name__ == "__main__":
