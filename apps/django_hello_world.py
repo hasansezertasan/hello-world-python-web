@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["django>=5.2.8"]
 # ///
+"""Django Hello, World! Example.
+
+Django is a high-level Python web framework for rapid development.
+"""
+
 import django
 from django.conf import settings
 from django.core.management import execute_from_command_line
@@ -21,7 +26,7 @@ if not settings.configured:
     django.setup()
 
 
-def root(request):
+def root(request) -> HttpResponse:
     return HttpResponse("Hello, World!")
 
 

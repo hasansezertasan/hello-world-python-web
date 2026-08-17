@@ -1,7 +1,12 @@
 # /// script
-# requires-python = ">=3.7"
+# requires-python = ">=3.10"
 # dependencies = ["klein>=23.12.0"]
 # ///
+"""Klein Hello, World! Example.
+
+Klein is a micro web framework built on Twisted and Werkzeug.
+"""
+
 from klein import Klein
 
 app = Klein()

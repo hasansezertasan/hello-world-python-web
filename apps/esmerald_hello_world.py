@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["esmerald>=3.8.0", "uvicorn>=0.38.0"]
 # ///
+"""Esmerald Hello, World! Example.
+
+Esmerald is a modern, powerful, and flexible ASGI web framework.
+"""
+
 import uvicorn
 from esmerald import Esmerald, Gateway, JSONResponse, get
 

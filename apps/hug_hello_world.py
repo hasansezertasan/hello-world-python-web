@@ -2,12 +2,18 @@
 # requires-python = ">=3.10"
 # dependencies = ["hug"]
 # ///
-import hug
+"""Hug Hello, World! Example.
+
+Hug is a framework for developing APIs with automatic documentation.
+"""
+
 from wsgiref.simple_server import make_server
+
+import hug
 
 
 @hug.get("/")
-def hello():
+def hello() -> str:
     return "Hello, World!"
 
 

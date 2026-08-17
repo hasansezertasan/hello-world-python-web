@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["bottle>=0.13.4"]
 # ///
+"""Bottle Hello, World! Example.
+
+Bottle is a fast, simple, and lightweight WSGI micro web framework.
+"""
+
 from bottle import route, run
 
 

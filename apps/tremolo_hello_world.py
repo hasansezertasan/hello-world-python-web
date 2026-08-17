@@ -4,6 +4,10 @@
 #     "tremolo",
 # ]
 # ///
+"""Tremolo Hello, World! Example.
+
+Tremolo is a lightweight and fast async HTTP server framework.
+"""
 
 from tremolo import Application
 

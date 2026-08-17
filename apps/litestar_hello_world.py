@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["litestar>=2.9.12", "uvicorn>=0.38.0", "sniffio"]
 # ///
+"""Litestar Hello, World! Example.
+
+Litestar is a powerful, flexible, and performant ASGI framework.
+"""
+
 import uvicorn
 from litestar import Litestar, get
 

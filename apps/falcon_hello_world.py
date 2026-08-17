@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["falcon>=4.2.0"]
 # ///
+"""Falcon Hello, World! Example.
+
+Falcon is a minimalist ASGI/WSGI framework for building REST APIs.
+"""
+
 import wsgiref.simple_server
 
 import falcon

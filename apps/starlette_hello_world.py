@@ -2,13 +2,18 @@
 # requires-python = ">=3.10"
 # dependencies = ["starlette>=0.41.3", "uvicorn>=0.38.0"]
 # ///
+"""Starlette Hello, World! Example.
+
+Starlette is a lightweight ASGI framework for high-performance async services.
+"""
+
 import uvicorn
 from starlette.applications import Starlette
 from starlette.responses import PlainTextResponse
 from starlette.routing import Route
 
 
-async def root(request):
+async def root(request) -> PlainTextResponse:
     return PlainTextResponse("Hello, World!")
 
 

@@ -61,7 +61,12 @@ Each `*_hello_world.py` file follows this pattern:
 # requires-python = ">=3.10"
 # dependencies = ["framework>=version"]
 # ///
-# Framework-specific imports and setup
+"""<Framework> Hello, World! Example.
+
+<Brief description of the framework>.
+"""
+
+from framework import ...
 
 def main() -> None:
     # Start server on 0.0.0.0:8000
@@ -72,7 +77,9 @@ if __name__ == "__main__":
 ```
 
 Key requirements:
-- Function return type annotations must be included
+- PEP 723 inline script metadata block with `requires-python` and `dependencies`
+- Module-level docstring with framework name and brief description
+- Function return type annotations (e.g., `-> None`, `-> str`)
 - Host must be `0.0.0.0`
 - Port must be `8000`
 - Response must contain "Hello, World!"
@@ -135,9 +142,10 @@ async def app(scope, receive, send) -> None:
 - `wsgi_server.py`: Demonstrates minimal WSGI server using raw sockets, parsing HTTP manually and building the `environ` dict
 - `asgi_server.py`: Demonstrates minimal ASGI server using `asyncio.start_server`, handling scope/receive/send protocol
 
-## Git Workflow
+## Adding a New Framework
 
-Main branch: `main`
-Current working branch: `feat/implementations`
-
-Recent refactoring renamed files from hyphenated to underscored format (e.g., `flask-hello-world.py` → `flask_hello_world.py`).
+1. Checkout a new branch: `git checkout -b feat/<framework-name>`
+1. Create `apps/<framework>_hello_world.py` following the structure above
+1. Verify it works: `uv run apps/<framework>_hello_world.py`
+1. Run the test suite: `uv run apps/run_all.py`
+1. Update the README.md frameworks table

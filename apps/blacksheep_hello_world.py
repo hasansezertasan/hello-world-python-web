@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["blacksheep>=2.4.5", "uvicorn>=0.38.0"]
 # ///
+"""BlackSheep Hello, World! Example.
+
+BlackSheep is a fast ASGI web framework for Python.
+"""
+
 import uvicorn
 from blacksheep import Application, get
 

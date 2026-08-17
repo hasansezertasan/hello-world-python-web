@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["fastapi[all]>=0.121.2"]
 # ///
+"""FastAPI Hello, World! Example.
+
+FastAPI is a modern, fast, web framework for building APIs with Python.
+"""
+
 import uvicorn
 from fastapi import FastAPI
 

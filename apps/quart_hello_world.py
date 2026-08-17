@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["quart"]
 # ///
+"""Quart Hello, World! Example.
+
+Quart is an async Python web framework with Flask-compatible API.
+"""
+
 from quart import Quart
 
 app = Quart(__name__)

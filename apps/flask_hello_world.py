@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["flask>=3.1.2"]
 # ///
+"""Flask Hello, World! Example.
+
+Flask is a lightweight WSGI web application framework.
+"""
+
 from flask import Flask
 
 app = Flask(__name__)

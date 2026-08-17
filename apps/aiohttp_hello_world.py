@@ -2,10 +2,15 @@
 # requires-python = ">=3.10"
 # dependencies = ["aiohttp>=3.13.2"]
 # ///
+"""Aiohttp Hello, World! Example.
+
+Aiohttp is an asynchronous HTTP client/server framework.
+"""
+
 from aiohttp import web
 
 
-async def root(request):
+async def root(request) -> web.Response:
     return web.Response(text="Hello, World!")
 
 
