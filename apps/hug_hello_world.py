@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["hug"]
+# dependencies = ["hug", "legacy-cgi", "setuptools"]
 # ///
 """Hug Hello, World! Example.
 
@@ -18,7 +18,7 @@ def hello() -> str:
 
 
 def main() -> None:
-    server = make_server("0.0.0.0", 8000, __hug_wsgi__)
+    server = make_server("0.0.0.0", 8000, __hug_wsgi__)  # noqa: F821
     server.serve_forever()
 
 

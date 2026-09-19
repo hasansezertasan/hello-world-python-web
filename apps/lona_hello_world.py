@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.10,<3.14"
 # dependencies = ["lona"]
 # ///
 """Lona Hello, World! Example.
@@ -7,16 +7,20 @@
 Lona is a web application framework for interactive web apps in pure Python.
 """
 
-from lona import LonaApp, LonaView
-from lona.html import H1, HTML
+from lona import LonaApp, LonaView, Route
+from lona.responses import Response
 
 app = LonaApp(__file__)
 
 
-@app.route("/")
 class HelloView(LonaView):
-    def handle_request(self, request) -> HTML:
-        return HTML(H1("Hello, World!"))
+    def handle_request(self, request) -> Response:
+        return Response(text="Hello, World!", status=200)
+
+
+app.routes = [
+    Route("/", HelloView, http_pass_through=True),
+]
 
 
 def main() -> None:

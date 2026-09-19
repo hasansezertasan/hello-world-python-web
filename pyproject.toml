@@ -1,10 +1,11 @@
 [project]
-name = "python-web-hello-world"
+name = "hello-world-python-web"
 version = "0.1.0"
 description = "Hello, World! implementations for 30+ Python web frameworks"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
+dependencies = []
 authors = [
     { name = "hasansezertasan", email = "hasansezertasan@gmail.com" }
 ]
@@ -29,5 +30,5 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/hasansezertasan/python-web-hello-world"
-Repository = "https://github.com/hasansezertasan/python-web-hello-world"
+Homepage = "https://github.com/hasansezertasan/hello-world-python-web"
+Repository = "https://github.com/hasansezertasan/hello-world-python-web"

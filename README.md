@@ -18,6 +18,7 @@ The purpose of this project is to provide "Hello World" examples in various Pyth
     - [RSGI](#rsgi)
     - [Other](#other)
   - [Frameworks](#frameworks)
+    - [Not Included](#not-included)
   - [Protocol Servers](#protocol-servers)
   - [Other Resources](#other-resources)
   - [How to run](#how-to-run)
@@ -105,13 +106,29 @@ Learning and comparing different Python web frameworks can be challenging. This 
 | [circuits](./apps/circuits_hello_world.py)     | [Event-Driven Framework](https://circuitsframework.com/)           | WSGI                    |
 | [clastic](./apps/clastic_hello_world.py)       | [Functional Web Framework](https://clastic.readthedocs.io/)        | WSGI                    |
 | [dash](./apps/dash_hello_world.py)             | [Dashboard Framework](https://dash.plotly.com/)                    | WSGI                    |
-| [esmerald](./apps/esmerald_hello_world.py)     | [Async Web Framework](https://esmerald.dev/)                       | ASGI                    |
+| [ravyn](./apps/ravyn_hello_world.py)           | [Async Web Framework](https://github.com/dymmond/ravyn)            | ASGI                    |
 | [hug](./apps/hug_hello_world.py)               | [API Framework](https://hugapi.github.io/)                         | WSGI                    |
 | [klein](./apps/klein_hello_world.py)           | [Micro Framework](https://klein.readthedocs.io/)                   | WSGI                    |
 | [lona](./apps/lona_hello_world.py)             | [Pure Python Framework](https://lona-web.org/)                     | ASGI                    |
 | [quixote](./apps/quixote_hello_world.py)       | [Pythonic Framework](https://github.com/nascheme/quixote)          | WSGI                    |
 | [turbogears](./apps/turbogears_hello_world.py) | [Full-Stack Framework](https://turbogears.org/)                    | WSGI                    |
 | [wheezy_web](./apps/wheezy_web_hello_world.py) | [Lightweight Framework](https://github.com/akornatskyy/wheezy.web) | WSGI                    |
+| [baize](./apps/baize_hello_world.py)           | [ASGI/WSGI Toolkit](https://github.com/abersheeran/baize)          | ASGI                    |
+| [connexion](./apps/connexion_hello_world.py)   | [OpenAPI-first Framework](https://github.com/spec-first/connexion) | ASGI                    |
+| [emmett](./apps/emmett_hello_world.py)         | [Async Web Framework](https://emmett.sh/)                          | ASGI                    |
+| [muffin](./apps/muffin_hello_world.py)         | [ASGI Framework](https://github.com/klen/muffin)                   | ASGI                    |
+| [responder](./apps/responder_hello_world.py)   | [Web Framework](https://github.com/taoufik07/responder)            | ASGI                    |
+| [rsgi](./apps/rsgi_hello_world.py)             | [Bare RSGI App](./rsgi.py)                                         | RSGI                    |
+| [socketify](./apps/socketify_hello_world.py)   | [High-Performance Framework](https://github.com/cirospaciari/socketify.py) | Standalone       |
+| [twisted](./apps/twisted_hello_world.py)       | [Event-Driven Framework](https://twisted.org/)                     | Standalone              |
+
+### Not Included
+
+Some frameworks were evaluated but not included because they don't fit the single-file, root-path convention of this project:
+
+- **[py4web](https://github.com/web2py/py4web)** — Requires a multi-directory app structure and serves routes at `/app_name/index` rather than `/`. No single-file mode.
+- **[Masonite](https://github.com/MasoniteFramework/masonite)** — Full MVC framework that requires a complete project scaffold (controllers, routes files, service providers). No single-file mode.
+- **[Guillotina](https://github.com/plone/guillotina)** — Traversal-based REST framework where custom services mount at sub-paths (e.g., `/@hello`), not the root `/`. Overriding the root would fight the framework's design.
 
 ## Protocol Servers
 
@@ -122,11 +139,24 @@ These are battle-tested production servers used to deploy your Web Application.
 | [uvicorn](https://uvicorn.dev/)                                         | ASGI                   |
 | [daphne](https://github.com/django/daphne)                              | ASGI                   |
 | [hypercorn](https://hypercorn.readthedocs.io)                           | ASGI                   |
+| [mangum](https://github.com/jordanerr/mangum)                           | ASGI (AWS Lambda)      |
 | [granian](https://github.com/emmett-framework/granian)                  | ASGI/WSGI/RSGI         |
+| [socketify.py](https://github.com/cirospaciari/socketify.py)            | ASGI/WSGI              |
 | [gunicorn](https://gunicorn.org/)                                       | WSGI                   |
 | [waitress](https://docs.pylonsproject.org/projects/waitress/en/latest/) | WSGI                   |
-| [uwsgi](https://uwsgi-docs.readthedocs.io/en/latest/)                   | WSGI                   |
+| [uwsgi](https://uwsgi-docs.readthedocs.io/en/latest/)                  | WSGI                   |
 | [werkzeug](https://werkzeug.palletsprojects.com/)                       | WSGI                   |
+| [bjoern](https://github.com/jonashaag/bjoern)                          | WSGI                   |
+| [cheroot](https://github.com/cherrypy/cheroot)                          | WSGI                   |
+| [meinheld](https://github.com/mopemope/meinheld)                        | WSGI                   |
+| [mod_wsgi](https://github.com/GrahamDumpleton/mod_wsgi)                 | WSGI (Apache)          |
+| [gevent.pywsgi](https://www.gevent.org/)                                | WSGI                   |
+| [eventlet.wsgi](https://eventlet.readthedocs.io/)                       | WSGI                   |
+| [twisted.web](https://twisted.org/)                                     | WSGI                   |
+| [flup](https://www.saddi.com/software/flup/)                            | WSGI (FastCGI/SCGI)    |
+| [Paste](https://github.com/cdent/paste)                                 | WSGI                   |
+| [a2wsgi](https://github.com/abersheeran/a2wsgi)                         | ASGI↔WSGI adapter      |
+| [asgiref](https://github.com/django/asgiref)                            | ASGI↔WSGI adapter      |
 
 Why do we need those?
 
@@ -144,23 +174,28 @@ Because the servers provided by the Web Frameworks are generally development ser
 
 Each framework has its own implementation file in the `apps/` folder. To run any example:
 
-Simply run:
-
 ```sh
 uv run apps/<framework-name>_hello_world.py
 ```
 
-Or use the runner script to test all implementations:
+### Smoke Tests
+
+All implementations are automatically tested in CI via GitHub Actions (one matrix job per app). To smoke-test locally:
 
 ```sh
-uv run apps/run_all.py
+# Single app
+uv run apps/flask_hello_world.py &
+curl -sf http://localhost:8000  # Should return "Hello, World!"
+kill %1
+
+# All apps
+for app in apps/*_hello_world.py; do
+  uv run "$app" &
+  sleep 3
+  curl -sf http://localhost:8000 && echo " ✓ $app" || echo " ✗ $app"
+  kill %1 2>/dev/null; wait 2>/dev/null
+done
 ```
-
-The runner script will:
-
-- Execute each hello_world application with `uv run`
-- Verify that each app responds with a "Hello, World!" message on port 8000
-- Display a summary of successful and failed implementations
 
 If this does not work, please refer to the specific implementation file for more details.
 

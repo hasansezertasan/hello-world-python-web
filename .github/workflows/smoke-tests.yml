@@ -1,0 +1,112 @@
+name: Smoke Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.find-apps.outputs.apps }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - id: find-apps
+        run: |
+          apps=$(ls apps/*_hello_world.py | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          count=$(echo "$apps" | jq 'length')
+          echo "Found $count apps"
+          if [ "$count" -eq 0 ]; then
+            echo "::error::No hello_world apps found"
+            exit 1
+          fi
+          echo "apps=$apps" >> "$GITHUB_OUTPUT"
+
+  smoke-test:
+    needs: discover
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJson(needs.discover.outputs.apps) }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          enable-cache: true
+      - name: Run ${{ matrix.app }}
+        env:
+          APP: ${{ matrix.app }}
+        run: |
+          # Remove .python-version so uv respects each script's requires-python
+          rm -f .python-version
+
+          # Verify port 8000 is free
+          if curl -sf -o /dev/null http://127.0.0.1:8000 2>/dev/null; then
+            echo "::error::Port 8000 is already in use"
+            exit 1
+          fi
+
+          # Start the app, capture output to log files
+          uv run "$APP" > /tmp/app-stdout.log 2> /tmp/app-stderr.log &
+          APP_PID=$!
+          trap 'kill $APP_PID 2>/dev/null || true' EXIT
+
+          # Wait for the server to be ready
+          READY=false
+          for i in $(seq 1 15); do
+            if ! kill -0 "$APP_PID" 2>/dev/null; then
+              # Check if failure is due to Python version incompatibility
+              if grep -qE "requires-python|No interpreter found for Python|incompatible with" /tmp/app-stderr.log 2>/dev/null; then
+                echo "⊘ $APP: skipped (incompatible Python version)"
+                exit 0
+              fi
+              echo "::error::$APP exited prematurely (exit code: $(wait $APP_PID; echo $?))"
+              cat /tmp/app-stdout.log || true
+              cat /tmp/app-stderr.log || true
+              exit 1
+            fi
+            if curl -sf -o /dev/null http://127.0.0.1:8000 2>/dev/null; then
+              READY=true
+              break
+            fi
+            sleep 1
+          done
+
+          if [ "$READY" != "true" ]; then
+            echo "::error::$APP did not become ready within 15 seconds"
+            cat /tmp/app-stdout.log || true
+            cat /tmp/app-stderr.log || true
+            exit 1
+          fi
+
+          # Test the response
+          RESPONSE=$(curl -sf http://127.0.0.1:8000) || {
+            echo "::error::curl failed against $APP"
+            cat /tmp/app-stdout.log || true
+            cat /tmp/app-stderr.log || true
+            exit 1
+          }
+
+          if printf '%s' "$RESPONSE" | grep -q "Hello, World!"; then
+            echo "✓ $APP: Hello, World!"
+          else
+            echo "✗ $APP: Expected 'Hello, World!', got:"
+            printf '%s\n' "$RESPONSE" | head -20
+            exit 1
+          fi
+      - name: Sanitize artifact name
+        if: failure()
+        env:
+          APP: ${{ matrix.app }}
+        run: echo "ARTIFACT_NAME=logs-$(echo "$APP" | tr '/' '-' | sed 's/\.py$//')" >> "$GITHUB_ENV"
+      - name: Upload logs
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: /tmp/app-*.log
+          retention-days: 7

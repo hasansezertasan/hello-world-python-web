@@ -1,7 +1,7 @@
 # AGENTS.md
 
 ## Build/Lint/Test Commands
-- **Run all tests**: `uv run apps/run_all.py`
+- **Run all tests**: CI smoke tests via GitHub Actions (dynamic matrix per app)
 - **Run single test**: `uv run apps/<framework>_hello_world.py`
 - **Lint**: `ruff check .`
 - **Format**: `ruff format .`

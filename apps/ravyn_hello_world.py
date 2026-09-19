@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["esmerald>=3.8.0", "uvicorn>=0.38.0"]
+# dependencies = ["ravyn", "uvicorn>=0.38.0"]
 # ///
 """Esmerald Hello, World! Example.
 
@@ -8,7 +8,7 @@ Esmerald is a modern, powerful, and flexible ASGI web framework.
 """
 
 import uvicorn
-from esmerald import Esmerald, Gateway, JSONResponse, get
+from ravyn import Gateway, JSONResponse, Ravyn, get
 
 
 @get("/")
@@ -17,7 +17,7 @@ def root() -> JSONResponse:
 
 
 def main() -> None:
-    app = Esmerald(routes=[Gateway(handler=root)])
+    app = Ravyn(routes=[Gateway(handler=root)])
 
     uvicorn.run(app, host="0.0.0.0", port=8000)
 
