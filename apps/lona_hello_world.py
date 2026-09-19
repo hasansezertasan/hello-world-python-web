@@ -15,6 +15,7 @@ app = LonaApp(__file__)
 
 class HelloView(LonaView):
     def handle_request(self, request) -> Response:
+        """Use an explicit response for Lona's HTTP pass-through route."""
         return Response(text="Hello, World!", status=200)
 
 

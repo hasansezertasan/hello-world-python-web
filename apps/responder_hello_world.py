@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["responder>=3.6.2"]
 # ///
+"""Responder Hello, World! Example.
+
+Responder provides a high-level API for ASGI and WSGI web applications.
+"""
+
 import responder
 
 api = responder.API()

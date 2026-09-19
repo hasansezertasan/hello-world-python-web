@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["connexion[uvicorn]>=3.3.0", "pyyaml>=6.0"]
 # ///
+"""Connexion Hello, World! Example.
+
+Connexion builds API applications from OpenAPI specifications.
+"""
+
 import sys
 from pathlib import Path
 

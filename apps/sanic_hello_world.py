@@ -14,6 +14,7 @@ app = Sanic("hello_world")
 
 @app.route("/")
 async def root(request) -> response.HTTPResponse:
+    """Keep Sanic response construction at the route boundary."""
     return response.text("Hello, World!")
 
 

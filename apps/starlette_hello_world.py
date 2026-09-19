@@ -14,6 +14,7 @@ from starlette.routing import Route
 
 
 async def root(request) -> PlainTextResponse:
+    """Return the response consumed by Starlette's root route."""
     return PlainTextResponse("Hello, World!")
 
 

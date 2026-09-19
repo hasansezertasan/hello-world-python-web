@@ -2,9 +2,9 @@
 # requires-python = ">=3.10"
 # dependencies = ["ravyn", "uvicorn>=0.38.0"]
 # ///
-"""Esmerald Hello, World! Example.
+"""Ravyn Hello, World! Example.
 
-Esmerald is a modern, powerful, and flexible ASGI web framework.
+Ravyn is a modern, powerful, and flexible ASGI web framework.
 """
 
 import uvicorn

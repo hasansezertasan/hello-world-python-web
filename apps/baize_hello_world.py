@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["baize>=0.23.1", "uvicorn>=0.34.0"]
 # ///
+"""Baize Hello, World! Example.
+
+Baize is a toolkit for building ASGI and WSGI web applications.
+"""
+
 import uvicorn
 from baize.asgi import PlainTextResponse, Router
 

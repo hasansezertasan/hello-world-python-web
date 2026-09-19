@@ -20,6 +20,7 @@ class RootDirectory(Directory):
 
 
 def create_publisher() -> Publisher:
+    """Build the publisher supplied to Quixote's simple server."""
     return Publisher(RootDirectory(), display_exceptions="plain")
 
 

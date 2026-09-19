@@ -12,6 +12,7 @@ from circuits.web import Controller, Server
 
 class Root(Controller):
     def index(self) -> str:
+        """Provide the controller's default response for the root route."""
         return "Hello, World!"
 
 

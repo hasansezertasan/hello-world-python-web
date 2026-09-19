@@ -11,6 +11,7 @@ from clastic import Application, Response
 
 
 def root() -> Response:
+    """Provide the response used by Clastic's registered root route."""
     return Response("Hello, World!")
 
 

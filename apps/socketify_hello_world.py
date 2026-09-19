@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["socketify>=0.0.31"]
 # ///
+"""Socketify Hello, World! Example.
+
+Socketify provides Python bindings for the high-performance uWebSockets server.
+"""
+
 from socketify import App
 
 
