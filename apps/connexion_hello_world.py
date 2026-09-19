@@ -2,8 +2,8 @@
 # requires-python = ">=3.10"
 # dependencies = ["connexion[uvicorn]>=3.3.0", "pyyaml>=6.0"]
 # ///
-from pathlib import Path
 import sys
+from pathlib import Path
 
 import connexion
 

@@ -1,7 +1,6 @@
 import ast
-from pathlib import Path
 import unittest
-
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -14,7 +13,10 @@ def find_function(
     module: ast.Module, name: str
 ) -> ast.FunctionDef | ast.AsyncFunctionDef:
     for node in module.body:
-        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == name:
+        if (
+            isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+            and node.name == name
+        ):
             return node
     msg = f"Function {name!r} not found"
     raise AssertionError(msg)

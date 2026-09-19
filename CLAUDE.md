@@ -137,15 +137,19 @@ ASGI apps follow ASGI 3.0 specification:
 ```python
 async def app(scope, receive, send) -> None:
     if scope["type"] == "http":
-        await send({
-            "type": "http.response.start",
-            "status": 200,
-            "headers": [[b"content-type", b"text/plain"]],
-        })
-        await send({
-            "type": "http.response.body",
-            "body": b"Hello, World!",
-        })
+        await send(
+            {
+                "type": "http.response.start",
+                "status": 200,
+                "headers": [[b"content-type", b"text/plain"]],
+            }
+        )
+        await send(
+            {
+                "type": "http.response.body",
+                "body": b"Hello, World!",
+            }
+        )
 ```
 
 ### Custom Server Implementations

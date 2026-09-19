@@ -10,7 +10,7 @@ def main() -> None:
     app.get("/", lambda res, req: res.end("Hello, World!"))
     app.listen(
         8000,
-        lambda config: print("Listening on port http://0.0.0.0:%d" % config.port),
+        lambda config: print(f"Listening on port http://0.0.0.0:{config.port}"),
     )
     app.run()
 
