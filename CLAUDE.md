@@ -162,7 +162,7 @@ async def app(scope, receive, send) -> None:
 1. Checkout a new branch: `git checkout -b feat/<framework-name>`
 1. Create `apps/<framework>_hello_world.py` following the structure above
 1. Verify it works: `uv run apps/<framework>_hello_world.py`
-1. Run the test suite: `uv run apps/run_all.py`
+1. Run the CI smoke tests in `.github/workflows/smoke-tests.yml` or use the local smoke-test commands above
 1. Update the README.md frameworks table
 
 ## Git Workflow

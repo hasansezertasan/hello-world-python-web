@@ -5,7 +5,6 @@ The following frameworks are planned for future implementation but not yet added
 | Framework                                      | External                                                         | Specification / Format    |
 | ---------------------------------------------- | ---------------------------------------------------------------- | ------------------------- |
 | flama      | [REST API Framework](https://flama.dev/)                       | Based on Starlette |
-| masonite   | [Full-Stack Framework](https://docs.masoniteproject.com/)      | Based on Werkzeug  |
 | molten     | [Modern Web Framework](https://molten.readthedocs.io/)         | WSGI               |
 | piccolo    | [Async ORM with Web](https://piccolo.readthedocs.io/)          | ASGI               |
 | view.py    | [Web Framework](https://view.zintensity.dev/)                  | ASGI               |
