@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = []
 # ///
+"""HTTP Hello, World! Example.
+
+Using Python's built-in http.server module from the standard library.
+"""
+
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 

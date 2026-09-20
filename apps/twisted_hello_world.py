@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["twisted>=25.5.0"]
 # ///
+"""Twisted Hello, World! Example.
+
+Twisted is an event-driven networking engine for Python.
+"""
+
 from twisted.internet import endpoints, reactor
 from twisted.web import resource, server
 

@@ -1,11 +1,20 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = []
+# ///
+"""Custom WSGI Server Implementation.
+
+A minimal WSGI server using raw sockets to demonstrate the WSGI protocol.
+"""
+
 import socket
 
 
-def app(environ, start_response):
+def app(environ, start_response) -> list[bytes]:
     status = "200 OK"
     headers = [("Content-Type", "text/plain")]
     start_response(status, headers)
-    return [b"Hello, WSGI World!"]
+    return [b"Hello, World!"]
 
 
 def run(app, host="0.0.0.0", port=8000) -> None:

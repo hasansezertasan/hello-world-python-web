@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["cherrypy>=18.10.0"]
 # ///
+"""CherryPy Hello, World! Example.
+
+CherryPy is a pythonic, object-oriented web framework.
+"""
+
 import cherrypy
 
 

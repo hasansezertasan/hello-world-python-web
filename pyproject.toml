@@ -1,6 +1,58 @@
 [project]
 name = "hello-world-python-web"
 version = "0.1.0"
-description = "Add your description here"
-requires-python = ">=3.14"
+description = "Hello, World! implementations for 30+ Python web frameworks"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
 dependencies = []
+authors = [
+    { name = "hasansezertasan", email = "hasansezertasan@gmail.com" }
+]
+keywords = [
+    "python",
+    "web",
+    "framework",
+    "hello-world",
+    "wsgi",
+    "asgi",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+]
+
+[project.urls]
+Homepage = "https://github.com/hasansezertasan/hello-world-python-web"
+Repository = "https://github.com/hasansezertasan/hello-world-python-web"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long (handled by formatter)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["apps"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"

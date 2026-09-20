@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["TurboGears2"]
 # ///
+"""TurboGears Hello, World! Example.
+
+TurboGears is a full-stack web application framework for Python.
+"""
+
 from wsgiref.simple_server import make_server
 
 from tg import AppConfig, TGController, expose

@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["wheezy.web"]
 # ///
+"""Wheezy.web Hello, World! Example.
+
+Wheezy.web is a lightweight, high-performance Python web framework.
+"""
+
 from wsgiref.simple_server import make_server
 
 from wheezy.http import HTTPResponse, WSGIApplication

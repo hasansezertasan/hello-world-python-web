@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["socketify>=0.0.31"]
 # ///
+"""Socketify Hello, World! Example.
+
+Socketify provides Python bindings for the high-performance uWebSockets server.
+"""
+
 from socketify import App
 
 
@@ -10,7 +15,7 @@ def main() -> None:
     app.get("/", lambda res, req: res.end("Hello, World!"))
     app.listen(
         8000,
-        lambda config: print("Listening on port http://0.0.0.0:%d" % config.port),
+        lambda config: print(f"Listening on port http://0.0.0.0:{config.port}"),
     )
     app.run()
 

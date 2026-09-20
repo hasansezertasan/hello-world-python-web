@@ -1,3 +1,12 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = []
+# ///
+"""Custom ASGI Server Implementation.
+
+A minimal ASGI server using asyncio to demonstrate the ASGI protocol.
+"""
+
 import asyncio
 from collections.abc import Callable
 
@@ -58,7 +67,7 @@ class ASGIServer:
                 writer.write(response + body)
                 await writer.drain()
 
-        async def receive():
+        async def receive() -> dict:
             return {"type": "http.request", "body": request_data, "more_body": False}
 
         # Call ASGI application
@@ -86,7 +95,7 @@ async def app(scope, receive, send) -> None:
         await send(
             {
                 "type": "http.response.body",
-                "body": b"Hello, ASGI World!",
+                "body": b"Hello, World!",
             }
         )
 

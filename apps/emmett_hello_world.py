@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["emmett>=2.7.1", "granian>=2.5.0"]
 # ///
+"""Emmett Hello, World! Example.
+
+Emmett is a full-stack framework with asynchronous application support.
+"""
+
 from emmett import App
 from granian import Granian
 

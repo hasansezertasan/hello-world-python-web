@@ -2,8 +2,13 @@
 # requires-python = ">=3.10"
 # dependencies = ["muffin>=0.102.3", "uvicorn>=0.34.0"]
 # ///
-import uvicorn
+"""Muffin Hello, World! Example.
+
+Muffin is a small ASGI web framework.
+"""
+
 import muffin
+import uvicorn
 
 app = muffin.Application()
 

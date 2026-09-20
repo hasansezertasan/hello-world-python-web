@@ -2,12 +2,17 @@
 # requires-python = ">=3.10"
 # dependencies = ["pyramid>=2.0.2", "waitress>=3.0.1"]
 # ///
+"""Pyramid Hello, World! Example.
+
+Pyramid is a flexible, full-featured Python web framework.
+"""
+
 from pyramid.config import Configurator
 from pyramid.response import Response
 from waitress import serve
 
 
-def root(request):
+def root(request) -> Response:
     return Response("Hello, World!")
 
 

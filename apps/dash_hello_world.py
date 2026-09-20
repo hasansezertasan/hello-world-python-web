@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["dash>=3.3.0"]
 # ///
+"""Dash Hello, World! Example.
+
+Dash is a framework for building analytical web applications.
+"""
+
 import dash
 from dash import html
 

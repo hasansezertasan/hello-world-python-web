@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["tornado>=6.4.1"]
 # ///
+"""Tornado Hello, World! Example.
+
+Tornado is a Python web framework and asynchronous networking library.
+"""
+
 import tornado.ioloop
 import tornado.web
 

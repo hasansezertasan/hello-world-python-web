@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["ravyn", "uvicorn>=0.38.0"]
 # ///
+"""Ravyn Hello, World! Example.
+
+Ravyn is a modern, powerful, and flexible ASGI web framework.
+"""
+
 import uvicorn
 from ravyn import Gateway, JSONResponse, Ravyn, get
 

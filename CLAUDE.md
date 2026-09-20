@@ -72,7 +72,12 @@ Each `*_hello_world.py` file follows this pattern:
 # requires-python = ">=3.10"
 # dependencies = ["framework>=version"]
 # ///
-# Framework-specific imports and setup
+"""<Framework> Hello, World! Example.
+
+<Brief description of the framework>.
+"""
+
+from framework import ...
 
 def main() -> None:
     # Start server on 0.0.0.0:8000
@@ -83,7 +88,9 @@ if __name__ == "__main__":
 ```
 
 Key requirements:
-- Function return type annotations must be included
+- PEP 723 inline script metadata block with `requires-python` and `dependencies`
+- Module-level docstring with framework name and brief description
+- Function return type annotations (e.g., `-> None`, `-> str`)
 - Host must be `0.0.0.0`
 - Port must be `8000`
 - Response must contain "Hello, World!"
@@ -130,21 +137,33 @@ ASGI apps follow ASGI 3.0 specification:
 ```python
 async def app(scope, receive, send) -> None:
     if scope["type"] == "http":
-        await send({
-            "type": "http.response.start",
-            "status": 200,
-            "headers": [[b"content-type", b"text/plain"]],
-        })
-        await send({
-            "type": "http.response.body",
-            "body": b"Hello, World!",
-        })
+        await send(
+            {
+                "type": "http.response.start",
+                "status": 200,
+                "headers": [[b"content-type", b"text/plain"]],
+            }
+        )
+        await send(
+            {
+                "type": "http.response.body",
+                "body": b"Hello, World!",
+            }
+        )
 ```
 
 ### Custom Server Implementations
 
 - `wsgi_server.py`: Demonstrates minimal WSGI server using raw sockets, parsing HTTP manually and building the `environ` dict
 - `asgi_server.py`: Demonstrates minimal ASGI server using `asyncio.start_server`, handling scope/receive/send protocol
+
+## Adding a New Framework
+
+1. Checkout a new branch: `git checkout -b feat/<framework-name>`
+1. Create `apps/<framework>_hello_world.py` following the structure above
+1. Verify it works: `uv run apps/<framework>_hello_world.py`
+1. Run the CI smoke tests in `.github/workflows/smoke-tests.yml` or use the local smoke-test commands above
+1. Update the README.md frameworks table
 
 ## Git Workflow
 

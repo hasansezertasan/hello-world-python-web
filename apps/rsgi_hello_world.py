@@ -2,6 +2,11 @@
 # requires-python = ">=3.10"
 # dependencies = ["granian>=1.7.3"]
 # ///
+"""RSGI Hello, World! Example.
+
+RSGI is Granian's Rust-based server gateway interface.
+"""
+
 from granian import Granian
 
 
