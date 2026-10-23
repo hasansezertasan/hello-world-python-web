@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["emmett>=2.7.1", "granian>=2.5.0"]
 # ///
 """Emmett Hello, World! Example.

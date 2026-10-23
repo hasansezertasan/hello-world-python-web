@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["fastapi[all]>=0.121.2"]
 # ///
 """FastAPI Hello, World! Example.

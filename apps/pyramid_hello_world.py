@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["pyramid>=2.0.2", "waitress>=3.0.1"]
 # ///
 """Pyramid Hello, World! Example.

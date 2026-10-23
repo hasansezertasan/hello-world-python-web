@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["tornado>=6.4.1"]
 # ///
 """Tornado Hello, World! Example.

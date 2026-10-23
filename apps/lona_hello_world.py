@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10,<3.14"
+# requires-python = ">=3.11,<3.14"
 # dependencies = ["lona"]
 # ///
 """Lona Hello, World! Example.

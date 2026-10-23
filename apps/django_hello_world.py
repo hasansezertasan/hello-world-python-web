@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["django>=5.2.8"]
 # ///
 """Django Hello, World! Example.

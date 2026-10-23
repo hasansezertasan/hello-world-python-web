@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["blacksheep>=2.4.5", "uvicorn>=0.38.0"]
 # ///
 """BlackSheep Hello, World! Example.

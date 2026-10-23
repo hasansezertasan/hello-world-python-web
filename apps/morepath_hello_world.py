@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["morepath>=0.19.0"]
 # ///
 """Morepath Hello, World! Example.

@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["cherrypy>=18.10.0"]
 # ///
 """CherryPy Hello, World! Example.

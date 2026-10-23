@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["aiohttp>=3.13.2"]
 # ///
 """Aiohttp Hello, World! Example.

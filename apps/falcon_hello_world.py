@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["falcon>=4.2.0"]
 # ///
 """Falcon Hello, World! Example.

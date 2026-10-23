@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["baize>=0.23.1", "uvicorn>=0.34.0"]
 # ///
 """Baize Hello, World! Example.

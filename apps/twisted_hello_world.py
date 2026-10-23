@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["twisted>=25.5.0"]
 # ///
 """Twisted Hello, World! Example.

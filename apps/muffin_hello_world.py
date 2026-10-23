@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["muffin>=0.102.3", "uvicorn>=0.34.0"]
 # ///
 """Muffin Hello, World! Example.
