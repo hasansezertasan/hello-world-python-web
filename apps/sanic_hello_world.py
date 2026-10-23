@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["sanic>=24.12.0"]
 # ///
 """Sanic Hello, World! Example.

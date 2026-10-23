@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["litestar>=2.9.12", "uvicorn>=0.38.0", "sniffio"]
 # ///
 """Litestar Hello, World! Example.

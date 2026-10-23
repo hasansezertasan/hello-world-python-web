@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["responder>=3.6.2"]
 # ///
 """Responder Hello, World! Example.

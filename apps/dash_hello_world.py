@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["dash>=3.3.0"]
 # ///
 """Dash Hello, World! Example.

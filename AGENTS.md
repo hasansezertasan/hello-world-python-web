@@ -69,7 +69,7 @@ Each `*_hello_world.py` file follows this pattern:
 
 ```python
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["framework>=version"]
 # ///
 """<Framework> Hello, World! Example.

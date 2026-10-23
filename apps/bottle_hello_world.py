@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["bottle>=0.13.4"]
 # ///
 """Bottle Hello, World! Example.

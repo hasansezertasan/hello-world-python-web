@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["starlette>=0.41.3", "uvicorn>=0.38.0"]
 # ///
 """Starlette Hello, World! Example.

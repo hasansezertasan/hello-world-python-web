@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["pycnic>=0.1.0"]
 # ///
 """Pycnic Hello, World! Example.

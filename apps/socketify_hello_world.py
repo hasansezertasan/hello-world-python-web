@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = ["socketify>=0.0.31"]
 # ///
 """Socketify Hello, World! Example.
